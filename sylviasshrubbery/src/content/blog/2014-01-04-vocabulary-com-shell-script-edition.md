@@ -9,7 +9,6 @@ I found that I often look words up on vocabulary.com. In my opinion, this is a p
 
 So now I have this handy script for fetching word searches right from the comfort of my own terminal:
 
-
 ```bash
 #!/bin/bash
 curl -s "http://www.vocabulary.com/dictionary/autocomplete?search=$@" | perl -pe '
@@ -21,11 +20,9 @@ curl -s "http://www.vocabulary.com/dictionary/autocomplete?search=$@" | perl -pe
 '
 ```
 
-
 Example use:
 
-
-```    
+```
 vocabulary.sh <search term>
 vocabulary.sh test
 ```

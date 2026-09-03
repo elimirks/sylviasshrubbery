@@ -33,7 +33,7 @@ while read -sN1 key; do
 	key+=${k1}${k2}${k3}
 
 	case "$key" in
-		# Up send_keyevent 
+		# Up send_keyevent
 		$'\e[A'|$'\e0A') send_keyevent 19 ;;
 		# Down
 		$'\e[B'|$'\e0B') send_keyevent 20 ;;
@@ -51,8 +51,6 @@ while read -sN1 key; do
 done
 ```
 
-
-
 It is an interactive script with no command line arguments.
 
 Usage:
@@ -62,7 +60,5 @@ Insert: Begin text insert mode.
 Arrows: D-pad
 
 Enter/Space: D-pad middle button
-
-
 
 Enjoy.

@@ -6,9 +6,8 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
 I often find the Matlab [nanmean](https://www.mathworks.com/help/stats/nanmean.html) function very useful. Unfortunately there is no builtin to behave similarly for RMS. So here is a snippet which may yield use!
- 
 
-```octave    
+```octave
 function r = nanrms(values)
 % Compute the RMS of the given values, ignoring NaNs
 
@@ -20,4 +19,4 @@ for i = 1:size(values, 2)
     r(end + 1) = rms(nonNaNs);
 end
 end
-```    
+```

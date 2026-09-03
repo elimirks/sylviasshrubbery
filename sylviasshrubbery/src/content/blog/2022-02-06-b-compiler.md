@@ -236,6 +236,7 @@ I wrote some similar code to search for the end of identifiers and the end of co
 I wanted the parser to be fast with good error messages, so I hand rolled a [recursive descent parser](https://en.wikipedia.org/wiki/Recursive_descent_parser) instead of using a parser generator or parser combinators. It's definitely more work than other techniques, but makes it easy to understand what the parser is doing. I found that by hand rolling the parser, I was able to optimize much better, and have better error messages without sacrificing performance.
 
 ### Pinpointed error messages
+
 The positions of all the tokens, expressions, and statements are retained throughout the entire compilation process, so you'll always see pinpointed error messages like this:
 
 ```
@@ -246,16 +247,21 @@ In file: /home/elijah/code/b64/examples/args.b
 ```
 
 ### Performance point 1: Avoid unnecessary work
+
 I didn't do a lot of nitty gritty optimization in the compiler, but I tried to write everything with the mindset of avoid extra work. For example, instead of backtracking for ambiguous expressions or statements, I would lookahead a token to decide a parse path first.
 
 Other parsers I've written depended heavily on backtracking, which is by definition wasting work!
+
 ### Performance point 2: Make it easily parallelizable
+
 I wrote the parser in such a way that it could easily be parallelized across threads. The approach I took was to first parse everything in parallel, aggregate the top level statements, then pass the result to the code gen.
 
 I used the thread pool approach. When the compiler starts, it will create a thread poll sized depending on how many virtual CPUs you have. The threads will then wait for the parse stack to change, and pop off file paths that need parsing. Whenever you `#import` a new file, it will be added to a parse stack and trigger a condvar, waking up any sleeping threads. The idle threads will pull file paths off the parse stack one by one until it's empty. Once all threads are idle and the parse stack is empty, the threads will shut down, and the aggregate root statements are passed to code gen.
 
 This approach works pretty well, but has a one main problem: If there aren't a lot of files to parse, most of the threads will be sitting idle. If I were to write this again, I would probably try to lift the thread pool to a higher level, so that idle threads could start working on codegen.
+
 ### Performance point 3: Try to hit the CPU cache
+
 Stealing some ideas from the data oriented designed people, I parsed the root level statement into multiple arrays of statements, instead of a single array with mixed types. I don't remember what the performance improvement was in doing this, but it was something high like 5% faster:
 
 ```rust
@@ -266,6 +272,7 @@ pub defines: Vec<RSDefine>,
 ```
 
 From what I understand, there are two reasons why it's faster than using a single array:
+
 1. There are more CPU cache hits
 
 During code gen, I needed to iterate over each type of root level statement at a time. Static strings needed to be written to the readonly segment, global variables needed to be written to the RO segment, and functions needed to be iterated over for the function codegen. So by using multiple arrays, I could iterate over only the data I _need to_ for each part of the code gen.

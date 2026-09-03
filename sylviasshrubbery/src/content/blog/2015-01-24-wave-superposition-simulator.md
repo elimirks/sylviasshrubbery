@@ -10,5 +10,3 @@ Hello, blog.
 So tonight, I built a little wave superposition simulator!
 
 Check it out: [Superposition simulator](/miniprograms/superposition.html)
-
-

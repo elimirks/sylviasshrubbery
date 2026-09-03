@@ -5,26 +5,21 @@ pubDate: "Nov 20 2015"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
-Scala is a legendary language that allows both OO and functional programming. On top of that, it is compatible with Java and compiles to JVM bytecode. Hence, in theory, it could be used anywhere Java is used *cough cough* Android *cough cough*.
+Scala is a legendary language that allows both OO and functional programming. On top of that, it is compatible with Java and compiles to JVM bytecode. Hence, in theory, it could be used anywhere Java is used _cough cough_ Android _cough cough_.
 
 For a while, I have been meaning to try out Scala - and today I bit the bullet.
 
 Closures are awesome. Here is a simple example which multiplies a list by 2 and prints the result:
 
-
-```scala    
+```scala
 List(1, 2, 3).map(_ * 2).foreach(println)
 ```
-
-
 
 Of course, this is a very trivial example of how closures can be used, but I find the syntax pretty cool nonetheless :D
 
 Here are some other features that I really like about Scala:
 
- 
-
-```scala    
+```scala
 // Implicit types
 var i = 0 // (Also notice no semicolons!)
 
@@ -46,11 +41,9 @@ concatStrings(first = "O", second = "hai")
 
 // When you specify parameter names, order doesn't matter
 concatStrings(second = "hai", first = "O")
-```    
-
+```
 
 Just for kicks, I decided to build a simple regex matching program with character matching, "multiple", and "or" functionality.
-
 
 ```scala
 object RegexMatcher {
@@ -92,4 +85,3 @@ object RegexMatcher {
                                 matchesRegex(regex substring 1, s substring 1)
 }
 ```
-    

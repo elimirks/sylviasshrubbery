@@ -6,9 +6,11 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
 # Warning!
+
 If you like puzzle games, go play Tunic before reading this! Major spoilers ahead!
 
 # Decoding Tunic
+
 In Tunic, you're dropped into a world where you aren't given any instructions other than how to move. As you play, you learn more about the world by collecting manual pages, that are mostly written in Tunic but have some English sprinkled throughout.
 
 I heard that it's actually translatable and has a bunch of secrets in it, so naturally I had to figure it out (mostly without the internet because why spoil the fun?).
@@ -18,6 +20,7 @@ It's not every day you stumble upon an simple script you can learn to decipher o
 ![Manual Page](/images/decoding-tunic/random-page.jpg)
 
 So. How do you figure out a language that you know nothing about? Figure out things you _do_ know, and go from there. For me:
+
 - I assumed it was in English under the hood
 - Most words are only 1 or 2 characters, so you must be able to combine multiple English letters into a single character, not just a [substitution cipher](https://en.wikipedia.org/wiki/Substitution_cipher).
 - I assumed the horizontal lines were to group characters into a single word, since existing human scripts like [Devanagari](https://en.wikipedia.org/wiki/Devanagari) already do that.
@@ -26,14 +29,13 @@ So. How do you figure out a language that you know nothing about? Figure out thi
 
 ![Fragment Hint](/images/decoding-tunic/character-hint.jpeg)
 
-I started looking through the manual and found that character A (below) occurs before a bunch of nouns. But so do B and C. But B didn't appear before any proper nouns, so I guessed it was "a", not "the". But what about C? Maybe it's "an"? No, on one page it occured before "the", so it can't be "a" or "an"... 
+I started looking through the manual and found that character A (below) occurs before a bunch of nouns. But so do B and C. But B didn't appear before any proper nouns, so I guessed it was "a", not "the". But what about C? Maybe it's "an"? No, on one page it occured before "the", so it can't be "a" or "an"...
 
 A: <svg xmlns="http://www.w3.org/2000/svg" width="55" height="110" stroke-width="2" stroke="#000"><rect width="100%" height="100%" fill="#ddf" stroke="none"></rect><line x1="5" y1="37" x2="50" y2="37"></line><line x1="5" x2="27.5" y1="14.6" y2="5"></line><line x1="27.5" x2="27.5" y1="5" y2="24.2"></line><line x1="50" x2="27.5" y1="14.6" y2="5"></line><line x1="27.5" x2="27.5" y1="37" y2="24.2"></line><line x1="5" x2="27.5" y1="59.4" y2="49.8"></line><line x1="27.5" x2="27.5" y1="49.8" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="49.8"></line><text fill="black" font-family="Helvetica" stroke-width="0.3" x="5" y="100">ð-ə</text></svg>
 
 B: <svg xmlns="http://www.w3.org/2000/svg" width="55" height="110" stroke-width="2" stroke="#000"><rect width="100%" height="100%" fill="#ddf" stroke="none"></rect><line x1="5" y1="37" x2="50" y2="37"></line><line x1="5" x2="27.5" y1="14.6" y2="5"></line><line x1="50" x2="27.5" y1="14.6" y2="5"></line><text fill="black" font-family="Helvetica" stroke-width="0.3" x="5" y="100">ə</text></svg>
 
 C: <svg xmlns="http://www.w3.org/2000/svg" width="55" height="110" stroke-width="2" stroke="#000"><rect width="100%" height="100%" fill="#ddf" stroke="none"></rect><line x1="5" y1="37" x2="50" y2="37"></line><line x1="5" x2="27.5" y1="14.6" y2="5"></line><line x1="50" x2="27.5" y1="14.6" y2="5"></line><line x1="5" x2="27.5" y1="59.4" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="69"></line><text fill="black" font-family="Helvetica" stroke-width="0.3" x="5" y="100">ar</text></svg>
-
 
 Anyways, I know what two words mean. But those are some trivial examples.. I took a break from translating and started solving some of the puzzles. I came across one where there's a signpost with 4 different characters written on it:
 
@@ -47,7 +49,7 @@ More information! Wonderful! But it still ain't enough to decipher the whole scr
 
 D: <svg xmlns="http://www.w3.org/2000/svg" width="55" height="110" stroke-width="2" stroke="#000"><rect width="100%" height="100%" fill="#ddf" stroke="none"></rect><line x1="5" y1="37" x2="50" y2="37"></line><line x1="5" x2="5" y1="14.6" y2="37"></line><line x1="5" x2="27.5" y1="14.6" y2="5"></line><line x1="27.5" x2="27.5" y1="5" y2="24.2"></line><line x1="50" x2="27.5" y1="14.6" y2="24.2"></line><line x1="27.5" x2="27.5" y1="37" y2="24.2"></line><line x1="5" x2="5" y1="49.8" y2="59.4"></line><line x1="5" x2="27.5" y1="59.4" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="49.8"></line><text fill="black" font-family="Helvetica" stroke-width="0.3" x="5" y="100">k-ee</text></svg>
 
-I kept doing this with some simple words like "shield", "move", "potion", "controls", "focus", "use item" ... when I hit that last one, I realized I knew enough characters to use a new technique - pick some arbitrary sentence, fill in the characters I know, and guess the rest. And from there you're really sailing. There might by a couple characters you don't know, but once you see them used in context across a few different sentences it's straightforward to figure out what they are. 
+I kept doing this with some simple words like "shield", "move", "potion", "controls", "focus", "use item" ... when I hit that last one, I realized I knew enough characters to use a new technique - pick some arbitrary sentence, fill in the characters I know, and guess the rest. And from there you're really sailing. There might by a couple characters you don't know, but once you see them used in context across a few different sentences it's straightforward to figure out what they are.
 
 "Traverse the glow to visit strange beings" - a hint for one of the puzzles.
 
@@ -60,7 +62,9 @@ I kept doing this with some simple words like "shield", "move", "potion", "contr
 <svg xmlns="http://www.w3.org/2000/svg" width="145" height="110" stroke-width="2" stroke="#000"><rect width="100%" height="100%" fill="#ddf" stroke="none"></rect><line x1="5" y1="37" x2="140" y2="37"></line><line x1="5" x2="5" y1="14.6" y2="37"></line><line x1="5" x2="27.5" y1="14.6" y2="5"></line><line x1="27.5" x2="27.5" y1="5" y2="24.2"></line><line x1="27.5" x2="27.5" y1="37" y2="24.2"></line><line x1="5" x2="5" y1="49.8" y2="59.4"></line><line x1="5" x2="27.5" y1="59.4" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="69"></line><line x1="50" x2="27.5" y1="59.4" y2="49.8"></line><text fill="orange" font-family="Helvetica" stroke-width="0.3" x="5" y="100">b-ee</text><line x1="50" x2="72.5" y1="14.6" y2="24.2"></line><line x1="72.5" x2="72.5" y1="5" y2="24.2"></line><line x1="95" x2="72.5" y1="14.6" y2="24.2"></line><line x1="72.5" x2="72.5" y1="37" y2="24.2"></line><line x1="50" x2="72.5" y1="59.4" y2="69"></line><line x1="50" x2="72.5" y1="59.4" y2="49.8"></line><line x1="72.5" x2="72.5" y1="49.8" y2="69"></line><line x1="95" x2="72.5" y1="59.4" y2="69"></line><line x1="95" x2="72.5" y1="59.4" y2="49.8"></line><circle cx="72.5" cy="74" r="4" fill="none"></circle><text fill="orange" font-family="Helvetica" stroke-width="0.3" x="50" y="100">ih-ng</text><line x1="95" x2="117.5" y1="14.6" y2="24.2"></line><line x1="117.5" x2="117.5" y1="5" y2="24.2"></line><line x1="117.5" x2="117.5" y1="37" y2="24.2"></line><line x1="117.5" x2="117.5" y1="49.8" y2="69"></line><line x1="140" x2="117.5" y1="59.4" y2="49.8"></line><text fill="orange" font-family="Helvetica" stroke-width="0.3" x="95" y="100">z</text></svg>
 
 See my [deciphering notes](/documents/decoding-tunic.html) if you're interested in more details!
+
 # Why it's a cool concept
+
 Back in the day, Korea used Hanja script (Chinese characters used to write Korean words). The nice part about Chinese characters is you can use a single script to represent Cantonese, Mandarin, Korean, and more, even though they all have completely different grammar. The not so nice part is you have to memorize thousands of complicated characters to be literate.
 
 The Korean dynasty of old decided literacy was a good thing and should be possible to learn even for the uneducated or _slightly_ educated. So they designed a new phonetic script (Hangul) - i.e. a script with characters that match how they're pronounced. If you look at a word in Korean that you've never seen before, you'll know how to pronounce it flawlessly because of the shiny new Hangul script!
@@ -72,4 +76,5 @@ Tunic reminded me of the Korean script which I've always loved. There are plenty
 Tunic isn't quuiiiite as elegant as Korean. English has words like... "words". It's a single syllable, but has to be represented by 3 characters in Tunic - "wor" "d" "s". Depending on the phonemes in your favourite language, it may or may not be representable by combining sounds into single characters.
 
 # In summary...
+
 Scripts are fun, go play Tunic, and I'm truly grateful to [King Sejong the Great](https://en.wikipedia.org/wiki/Origin_of_Hangul) for valuing literacy for his entire kingdom over prestige for its select elite.

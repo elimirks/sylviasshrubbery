@@ -5,26 +5,13 @@ pubDate: "Oct 26 2015"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
-
-
 For the next 5 weeks, I will be sleeping from 23:00-2:00 and 4:00-7:00, totaling in 6 hours of sleep per day. This is known as the segmented sleep schedule. If it goes well, I will likely continue with this schedule. For some of you 6 hours probably sounds like a lot, but I usually get 8 hours, so cutting out 2 is a significant improvement.
 
 My motive behind doing this is that I was recently offered a research opportunity that I could not refuse (I will likely post about it later). To make time for it, I had to sacrifice _something_ - my choice was sleep. About a year ago I was on a similar routine and it worked well, but I haven't had the motivation to start doing it again until now.
 
-
 <!-- more -->
 
-
-
-
-
-* * *
-
-
-
-
-
-
+---
 
 TL;DR
 
@@ -52,36 +39,17 @@ I had 6 successful trails and 1 unsuccessful trail, which was intentional. Plus,
 
 This week, a bunch of things got in the way that messed up my schedule. Despite this, I was able to bounce back into the routine easily.
 
-
-
-
-
-
-
-* * *
-
-
-
-
-
-
+---
 
 **Night 1 (October 24 - October 25)**
 
 Changes from previous day:
 
+- Installed the "I Can't Wake Up" app
 
+- Configured it so I have to scan a QR to wake up
 
-  
-  * Installed the "I Can't Wake Up" app
-
-  
-  * Configured it so I have to scan a QR to wake up
-
-  
-  * Set up a sunlight lamp
-
-
+- Set up a sunlight lamp
 
 In my waking period from 2:00-4:00, I felt a little groggy, but I ended up getting a lot of reading done.
 
@@ -97,18 +65,11 @@ Despite the second night failing, I am going to be an optimist! My waking period
 
 Changes from previous day:
 
+- Installed "Keep Me Awake"
 
+- Configured "I Can't Wake Up" so I have to shake the device viciously after scanning the QR
 
-  
-  * Installed "Keep Me Awake"
-
-  
-  * Configured "I Can't Wake Up" so I have to shake the device viciously after scanning the QR
-
-  
-  * Configured "I Can't Wake Up" to auto start "Keep Me Awake"
-
-
+- Configured "I Can't Wake Up" to auto start "Keep Me Awake"
 
 It is currently 3:52. The alarm must have been too soothing, because I didn't wake up for my waking period until 2:45. Once I got up, having to scan the QR code PLUS shake my device for about 30 seconds helped quite a bit. However, I need to get in the habit of _not_ setting a 5 minute alarm to simulate snoozing.
 
@@ -120,18 +81,11 @@ So I should have read through the settings of "I Can't Wake Up" more thoroughly.
 
 Changes from previous day:
 
+- Made "I Can't Wake Up" repeat both alarms every day
 
+- Changed my alarm to a really annoying buzzing sound
 
-  
-  * Made "I Can't Wake Up" repeat both alarms every day
-
-  
-  * Changed my alarm to a really annoying buzzing sound
-
-
-
-
-The waking phase was really good last night. I had no problems getting up. However, the app appears to have issues doing what it was meant to do - be an alarm clock. It didn't turn on at 7:00. 
+The waking phase was really good last night. I had no problems getting up. However, the app appears to have issues doing what it was meant to do - be an alarm clock. It didn't turn on at 7:00.
 
 **Night 5**
 
@@ -139,15 +93,9 @@ In the past I have used Sleep as Android for my alarm clock. I stopped because I
 
 Changes from previous day:
 
+- Switched to "Sleep as Android" for my alarm
 
-
-  
-  * Switched to "Sleep as Android" for my alarm
-
-  
-  * Moved the QR code from my lamp to the opposite side of the room (to force me to turn on the main light)
-
-
+- Moved the QR code from my lamp to the opposite side of the room (to force me to turn on the main light)
 
 It is now my waking period. Due to an assignment that was due at midnight, I had to push back my first sleeping phase to 11:30-2:30, at which point I immediately had a 5 minute nap after, so I woke up around 2:35. I always feel that naps will help me wake up (hint: they don't). Since I shifted my first cycle, I decided to shift my second to 4:30-7:30.
 
@@ -173,15 +121,9 @@ Ugh. So of course, I woke up at 6:44 feeling chipper, then made the terrible dec
 
 Changes from previous day:
 
+- Adjusted sleep range (n:45 to (n+1):15)
 
-
-  
-  * Adjusted sleep range (n:45 to (n+1):15)
-
-  
-  * Added an extra bar code to scan to disable my alarm
-
-
+- Added an extra bar code to scan to disable my alarm
 
 Success! For both alarms, looking at my university card (where the second bar code is located) probably reminded me why I started doing this whole experiment in the first place. And I didn't snooze! :D
 
@@ -203,12 +145,7 @@ Just for fun I am going to try changing my alarm sound to shuffle from a set of 
 
 Changes from previous day:
 
-
-
-  
-  * Changed the alarm to be a shuffled playlist of annoying tones
-
-
+- Changed the alarm to be a shuffled playlist of annoying tones
 
 Turns out waking up to a seagull is a very effective way to wake up.
 
@@ -256,16 +193,11 @@ Nothing interesting on this night.
 
 So according to my sleep tracker, I have been waking up around 10-15 minutes after my alarms go off. This results in quite a bit of extra sleep. To compensate, I am going to change my alarms to go off at 1:50±15 and 6:50±15.
 
-Something I forgot to mention: for those who don't know, Sleep as Android is a sleep tracker which will set off an alarm within a certain range. It determines when to do so based on predicted sleep cycles - e.g. if you are rolling around, it will detect movement, which implies that you are in light sleep. Hence at that point it would wake you up. 
+Something I forgot to mention: for those who don't know, Sleep as Android is a sleep tracker which will set off an alarm within a certain range. It determines when to do so based on predicted sleep cycles - e.g. if you are rolling around, it will detect movement, which implies that you are in light sleep. Hence at that point it would wake you up.
 
 Changes from previous day:
 
-
-
-  
-  * Changed my alarms to go off at 1:50±15 and 6:50±15.
-
-
+- Changed my alarms to go off at 1:50±15 and 6:50±15.
 
 Success.
 
@@ -303,12 +235,7 @@ According to my sleep tracker, I was in deep sleep when it woke me up, but an ho
 
 Changes from previous day:
 
-
-
-  
-  * Changed second sleeping phase to be from 3:30-6:30
-
-
+- Changed second sleeping phase to be from 3:30-6:30
 
 It seemed like it was easier to wake up at 6:30 today. I will try this for a few more days to see if it helps.
 
@@ -324,14 +251,8 @@ So I heard good things about the Timely Alarm Clock, which includes wake-up chal
 
 Changes from previous day:
 
+- Switched to the Timely Alarm Clock
 
-
-  
-  * Switched to the Timely Alarm Clock
-
-  
-  * Changed the alarms back to 2:00 and 7:00
-
-
+- Changed the alarms back to 2:00 and 7:00
 
 Stay tuned...

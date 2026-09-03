@@ -4,6 +4,7 @@ description: Using a PATA cable for Raspberry Pi B+ GPIO pins
 pubDate: "Dec 27 2014"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
+
 {{< load-photoswipe >}}
 
 This is not a very impressive discovery... but I figured out that with a (very little) bit of work, a PATA ribbon cable works perfectly with the Raspberry Pi B+!

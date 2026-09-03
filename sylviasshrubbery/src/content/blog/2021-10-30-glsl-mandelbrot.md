@@ -6,6 +6,7 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
 ## Intro
+
 ![Full Mandelbrot Set](/images/glsl-mandelbrot/fullbrot.png)
 
 While working on magicpixel, I wanted to try rendering the Mandelbrot Set. I guess as a \\((sideproject)^2\\). Magicpixel was already using OpenGL for rendering, so it was pretty simple to reuse all the boilerplate code. I pretty much just had to chop out a bunch of unnecessary code and change the fragment shader (more on that later). Here's the [Github repo](https://github.com/elimirks/miscprojects/tree/master/glsl_mandelbrot) for the full project source code.
@@ -22,7 +23,7 @@ $$z_{n+1} = z_n^2 + c$$
 
 ![Green Boi](/images/glsl-mandelbrot/green_boi.png)
 
-To get an approximation, we could say \\(z\\) does not diverge *to a high value of* \\(n\\), instead of "z does not diverge at all". The higher maximum value of \\(n\\), the closer the approximation is to the exact set. However, using a higher number means it will be more computationally expensive. I learned about this technique in a Computational Physics course, but the version I wrote back then was rendering on a single CPU thread, so was too slow to interact with.
+To get an approximation, we could say \\(z\\) does not diverge _to a high value of_ \\(n\\), instead of "z does not diverge at all". The higher maximum value of \\(n\\), the closer the approximation is to the exact set. However, using a higher number means it will be more computationally expensive. I learned about this technique in a Computational Physics course, but the version I wrote back then was rendering on a single CPU thread, so was too slow to interact with.
 
 Here's a snipped to decide, approximately, if the point \\(x,y\\) is in the Mandelbrot set, written in GLSL.
 
@@ -45,7 +46,7 @@ bool in_set(float x, float y) {
 }
 ```
 
-But if we were to render this, we would only have a black and white photo. To make the image more interesting, let's think about how to color the image. 
+But if we were to render this, we would only have a black and white photo. To make the image more interesting, let's think about how to color the image.
 
 ## Coloring
 
@@ -104,9 +105,9 @@ return mix(floor_col, ceil_col, dist);
 
 ![Trail of Red](/images/glsl-mandelbrot/trail.png)
 
-So why use GLSL? In magicpixel, we were originally rendering via the CPU. In that project, we basically had a bunch of grid squares to paint solid colors, so CPU rendering was.... ok-*ish* at first. But when we increased the grid size it became abysmally slow. I won't go into detail about that project in this post, but basically we increased our FPS from 60 to 3000 by rendering via fragment shaders.
+So why use GLSL? In magicpixel, we were originally rendering via the CPU. In that project, we basically had a bunch of grid squares to paint solid colors, so CPU rendering was.... ok-_ish_ at first. But when we increased the grid size it became abysmally slow. I won't go into detail about that project in this post, but basically we increased our FPS from 60 to 3000 by rendering via fragment shaders.
 
-A "fragment shader" is a program that will run on your GPU. It basically decides what color each pixel should be, parallelized across all your GPU shader cores. So by computing the mandelbrot set on the GPU, we could parallelize the work *super easily*.
+A "fragment shader" is a program that will run on your GPU. It basically decides what color each pixel should be, parallelized across all your GPU shader cores. So by computing the mandelbrot set on the GPU, we could parallelize the work _super easily_.
 
 ## Limitations
 

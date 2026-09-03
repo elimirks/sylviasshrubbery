@@ -22,7 +22,7 @@ else
 
 After talking about the scope of things you could actually do with this approach of programming, we realized it's a truly awful idea, even from an esoteric perspective. If you wanted to simulate deterministic behaviour, all you would have to do is make it _extremely_ unlikely to evaluate incorrectly. Think "dozens of identical nested conditionals".
 
-What a bummer! But at this point we held a simultaneous epiphany, Haskell is a pain in the spleen to learn, but everyone knows Python these days... *what if we mix them?*
+What a bummer! But at this point we held a simultaneous epiphany, Haskell is a pain in the spleen to learn, but everyone knows Python these days... _what if we mix them?_
 
 During a few months of quarantine, we went manic on creating the [Monty](https://montylang.github.io/docs/docs/) programming language. Honestly, we probably put as much time into it as our actual jobs for 3 months straight.
 
@@ -41,7 +41,7 @@ Guess the language:
 add1 = def (x):
   return x + 1
 ```
-      
+
 Python right? Yeah, wait... no! What on Earth is that function assignment? In pure functional languages, functions are "first class citizens", so they are types of values. In Monty, the two above definitions for `add1` are semantically identical. Everyone and their dog has dozens of lambdas. So we also shortened the syntax for it. A natural simplification of `def` is to drop the leading keyword, and return the first expression.
 
 ```python
@@ -111,20 +111,20 @@ Something that helps a great deal with type inferrence is a special `self` keywo
 type Functor:
   def map(self, function)
 ```
-      
+
 In this definition, the interpreter knows that the first argument to `map` _must_ be a functor instance.
 
 ```python
 type Equal:
   def equals(self, self)
 ```
-      
+
 In this definition, the interpreter knows that _both_ arguments must be of the same type. So this is an entry point for inferrence. The following will correctly infer that `wrap(42)` must be a list:
 
 ```python
 equals([42], wrap(42))
 ```
-    
+
 Some fun type signatures, may they serve as implementation hints:
 
 ```python
@@ -137,7 +137,7 @@ runFun :: Value -> [Value] -> Scoper Value
 
 Initially, all expressions were evaluated in a huge `eval` function. It was a nice long list of unwieldy pattern matches. The first refactor was just pulling out the pattern match bodies into separate functions. But they were still there, silently haunting the codebase.
 
-Through some actual, real life dark arts (aka existential quantification), we split the pattern match into modular evaluatable pieces. For example, the condition evaluatable  (for if statements) lives with its AST definition:
+Through some actual, real life dark arts (aka existential quantification), we split the pattern match into modular evaluatable pieces. For example, the condition evaluatable (for if statements) lives with its AST definition:
 
 ```python
 data RCondition = RCondition
@@ -174,17 +174,17 @@ We wanted to have most things defined in Monty, but some things were just too sl
 
 ## Unit is just an empty tuple
 
-As a complete aside, unit `()` is just a tuple with no elements. My mind melted a little bit when I realized that.  
+As a complete aside, unit `()` is just a tuple with no elements. My mind melted a little bit when I realized that.
 
 # MyLib
 
 Like any quasi-legitimate language, Monty has a standard library with loads of useful functions, types, and class definitions:
 
 ```python
-# Finds the length of a foldable 
+# Finds the length of a foldable
 def len(someFoldable):
   return someFoldable.foldl(0, (acc, _): acc + 1)
-  
+
 # Checks everything in a given foldable satisfy the predicate
 def all(foldable, predicate):
   return foldable.foldl(True, (acc, it): acc and predicate(it))

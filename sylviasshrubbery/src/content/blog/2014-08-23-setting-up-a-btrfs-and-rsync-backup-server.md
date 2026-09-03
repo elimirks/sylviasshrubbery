@@ -9,20 +9,13 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 
 This is for people who came across the following issues with current backup solutions:
 
+- You have multiple computers, but you want to sync all backups onto one of them.
 
+- You want the benefits of rsnapshot - daily, weekly, and monthly snapshots.
 
-	
-  * You have multiple computers, but you want to sync all backups onto one of them.
+- You want the efficient COW (copy-on-write) benefits of BTRFS.
 
-	
-  * You want the benefits of rsnapshot - daily, weekly, and monthly snapshots.
-
-	
-  * You want the efficient COW (copy-on-write) benefits of BTRFS.
-
-	
-  * You want to back all of this up onto a single, designated backup disk.
-
+- You want to back all of this up onto a single, designated backup disk.
 
 **Syncing from remote nodes to the server.**
 
@@ -32,14 +25,13 @@ For this to work, you will need to add your client public key to the authorized_
 
 Here is a little script I wrote to handle things nicely:
 
-
-```bash    
+```bash
 #!/bin/bash
 
 DIRECTORIES='/etc /usr/local /home'
 # This doesn't have to be a host name.
 # It could be called something like "laptop"
-#COMP_NAME=`hostname` 
+#COMP_NAME=`hostname`
 COMP_NAME=laptop
 SERVER_HOST=redplatypus
 BACKUP_DIR=/mnt/backup
@@ -61,18 +53,14 @@ function syncdown {
 # Sync if the lab host is accessible.
 ping -c 1 $SERVER_HOST && syncdown
 ```
-    
-
 
 I recommend placing this in `/usr/local/bin/` and giving it the permissions `700` (for root only).
 
 In my root crontab, I have this script set to run every hour at ??:30. On the server, we will be snapshotting everything at ??:00, so this prevents any possible conflicts.
 
-    
 ```
 30 * * * * /usr/local/bin/sync_to_backup_server.sh
 ```
-
 
 **Setting up the server.**
 
@@ -83,8 +71,7 @@ Normally with rsnapshot, everything is synced into a .sync directory. BUT. With 
 ```
 root redplatypus 17:59 :) /mnt/backup
 # btrfs subvolume create .sync
-```    
-
+```
 
 You will need a few hacky scripts to trick rsnapshot into creating new subvolumes instead of directories as well. Place these in /usr/local/bin:
 
@@ -104,8 +91,7 @@ if [  "$1" = "-al" ]; then
 else
         /usr/bin/cp --reflink=auto $@
 fi
-```   
-
+```
 
 `rsnapshot_rm_btrfs`:
 
@@ -135,8 +121,6 @@ else
         rm $@
 fi
 ```
-    
-
 
 Now in `/etc/rsnapshot.conf`, you will want to set the following params:
 
@@ -147,7 +131,6 @@ cmd_cp    /usr/local/bin/rsnapshot_cp_btrfs
 cmd_rm    /usr/local/bin/rsnapshot_rm_btrfs
 sync_first  1
 ```
-
 
 As well of this, you will of course want to configure the interval options.
 
@@ -160,11 +143,9 @@ interval  weekly  4
 interval  monthly 3
 ```
 
-
 Now you just configure your rsnapshot backup directories. Here is my config:
 
-
-```    
+```
 # LOCALHOST
 backup  /home/    lab_backup/home/  exclude=.cache
 backup  /etc/   lab_backup/etc/
@@ -176,9 +157,7 @@ backup  /mnt/backup/laptop_sync/etc/  laptop_backup/etc/
 backup  /mnt/backup/laptop_sync/usr/local/  laptop_backup/usr/local/
 ```
 
-
 Last but not least, we add some crontab entries to snapshot ALL THE THINGS:
-
 
 ```
 # 'rsnapshot sync' is the only command that pulls files into the '.sync' directory

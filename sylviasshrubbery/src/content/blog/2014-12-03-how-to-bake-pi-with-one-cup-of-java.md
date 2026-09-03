@@ -7,7 +7,7 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 
 So I just watched a video on the [calculation of Pi](https://www.youtube.com/watch?v=yJ-HwrOpIps), and was intrigued to write my own little Pi calculator:
 
-```java    
+```java
 public class pi {
 	public static void main(String[] args) {
 		if (args.length == 0) {
@@ -26,20 +26,15 @@ public class pi {
 }
 ```
 
-
 In action:
 
-```text    
+```text
 % java pi 1000000 # The bigger the number, the more accurate
 ... (A whole bunch of intermediate steps)
 3.1415916535897743
 ```
-    
-
 
 Personally, this clarified my understanding of how Pi is calculated more than just seeing it in that video or in a book.
-
-
 
 Update:
 

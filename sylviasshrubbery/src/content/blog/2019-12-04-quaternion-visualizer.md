@@ -4,6 +4,7 @@ description: Quaternion Visualizer
 pubDate: "Dec 04 2019"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
+
 {{< load-photoswipe >}}
 
 **Update:** I made a video on this https://www.youtube.com/watch?v=cuZ99u7OSZE
@@ -23,7 +24,6 @@ $$(\frac{\sqrt{2}}{2} (1 + i))^2, \phi = 90^{\circ}$$
 $$(\frac{\sqrt{2}}{2} (1 + i))^3, \phi = 130^{\circ}$$
 $$(\frac{\sqrt{2}}{2} (1 + i))^4, \phi = 180^{\circ}$$
 
-
 Similarly, dividing will rotate clockwise, instead of anticlockwise.
 
 Multiplying or dividing any complex number \\(x\\) by a number \\(z, |z| = 1\\), will rotate \\(x\\) by the argument of \\(z\\).
@@ -34,16 +34,16 @@ Quaternions work similarly for 3D rotations as complex numbers do for 2D rotatio
 
 ## Visualizations
 
-  In this project, I plot a vector of quaternions on a two dimensional grid. The X axis reperesents the element in the quaternion vector. The Y axis represents the versor value of the real component of each quaternion. For the red, green, and blue values of each pixel, I used the values of the imaginary components of the versors. for instance, the unit quaternion would be gray (255/2 for each imaginary component). Negative values go to 0, positive values go to 255.
+In this project, I plot a vector of quaternions on a two dimensional grid. The X axis reperesents the element in the quaternion vector. The Y axis represents the versor value of the real component of each quaternion. For the red, green, and blue values of each pixel, I used the values of the imaginary components of the versors. for instance, the unit quaternion would be gray (255/2 for each imaginary component). Negative values go to 0, positive values go to 255.
 
 ### Adding complex components
 
-  In the picture below, I started with the quaternion \\(-1 - 1k\\), and added \\(0.02i\\) for every element in the size 400 quaternion vector.
+In the picture below, I started with the quaternion \\(-1 - 1k\\), and added \\(0.02i\\) for every element in the size 400 quaternion vector.
 
 ![Adding Quaternions](/images/quaternion-visualizer/add-static.png)
 
 ### Rotating numbers via multiplying by a constant
 
-   This one is more interesting - I am rotating the \\(-1 + 0.5k\\) quaternion by the \\(0.999550 + 0.029987i\\) quaternion. Notice that the rotation quaternion is a versor (it has a norm of 1). Since it's nearly entirely a real versor, it rotates slowly around both the real and complex components, which is why the below image is sinusoidal in the Y axis *and* in color space (it rotates through colours)  !
+This one is more interesting - I am rotating the \\(-1 + 0.5k\\) quaternion by the \\(0.999550 + 0.029987i\\) quaternion. Notice that the rotation quaternion is a versor (it has a norm of 1). Since it's nearly entirely a real versor, it rotates slowly around both the real and complex components, which is why the below image is sinusoidal in the Y axis _and_ in color space (it rotates through colours) !
 
 ![Rotating Quaternions](/images/quaternion-visualizer/rotate-static.png)

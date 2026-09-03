@@ -6,51 +6,56 @@ export interface Props {
 const { hideWhenNarrow = false } = Astro.props as Props;
 ---
 
-<div class:list={[ "social-links", hideWhenNarrow ? "hide-narrow" : "" ]}>
-    <a href="https://www.linkedin.com/in/sylviamirecki/" target="_blank">
-        <span class="sr-only">Follow Me on LinkedIn</span>
-        <img src="/icons/linkedin.svg" width="32" height="32" alt="LinkedIn Logo" />
-    </a>
-    <a href="https://github.com/elimirks" target="_blank">
-        <span class="sr-only">Or Github</span>
-        <img src="/icons/github.svg" width="32" height="32" alt="Github Logo" />
-    </a>
-    <a href="https://www.instagram.com/sylviamirecki" target="_blank">
-        <span class="sr-only">Or Instagram for more casual content</span>
-        <img src="/icons/instagram.svg" width="32" height="32" alt="Instagram Logo" />
-    </a>
+<div class:list={["social-links", hideWhenNarrow ? "hide-narrow" : ""]}>
+  <a href="https://www.linkedin.com/in/sylviamirecki/" target="_blank">
+    <span class="sr-only">Follow Me on LinkedIn</span>
+    <img src="/icons/linkedin.svg" width="32" height="32" alt="LinkedIn Logo" />
+  </a>
+  <a href="https://github.com/elimirks" target="_blank">
+    <span class="sr-only">Or Github</span>
+    <img src="/icons/github.svg" width="32" height="32" alt="Github Logo" />
+  </a>
+  <a href="https://www.instagram.com/sylviamirecki" target="_blank">
+    <span class="sr-only">Or Instagram for more casual content</span>
+    <img
+      src="/icons/instagram.svg"
+      width="32"
+      height="32"
+      alt="Instagram Logo"
+    />
+  </a>
 </div>
 
 <style>
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1em;
-        margin-top: 1em;
-    }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
 
-    .social-links a {
-        text-decoration: none;
-        color: rgb(var(--gray));
-    }
+  .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
 
-    .social-links a img {
-        width: 32px;
-        height: 32px;
-        filter: grayscale(100%);
-        opacity: 0.8;
-        transition: filter 5.4s;
-    }
+  .social-links a img {
+    width: 32px;
+    height: 32px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: filter 5.4s;
+  }
 
-    .social-links a:hover img {
-        filter: sepia(1) saturate(50000%) hue-rotate(300deg);
-        transition: filter 5.4s;
-    }
+  .social-links a:hover img {
+    filter: sepia(1) saturate(50000%) hue-rotate(300deg);
+    transition: filter 5.4s;
+  }
 
-    /* Only hide when .hide-narrow is present and screen is narrow */
-    @media (max-width: 720px) {
-        .social-links.hide-narrow {
-            display: none;
-        }
+  /* Only hide when .hide-narrow is present and screen is narrow */
+  @media (max-width: 720px) {
+    .social-links.hide-narrow {
+      display: none;
     }
+  }
 </style>

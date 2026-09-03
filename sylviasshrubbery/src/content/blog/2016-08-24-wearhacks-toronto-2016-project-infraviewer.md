@@ -1,6 +1,6 @@
 ---
-title: 'WearHacks Toronto 2016 Project: InfraViewer'
-description: 'WearHacks Toronto 2016 Project: InfraViewer'
+title: "WearHacks Toronto 2016 Project: InfraViewer"
+description: "WearHacks Toronto 2016 Project: InfraViewer"
 pubDate: "Aug 24 2016"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
@@ -17,4 +17,3 @@ The hardware turned out to be pretty difficult to overlay. The IR camera and vis
 {{< figure height="256" src="/images/misc/wearhacks2016.jpg" >}}
 
 You can check out the project here: [InfraViewer](https://github.com/Dirision/WearHacks2016). But be warned, the code base is pretty messy!
-

@@ -7,10 +7,8 @@ heroImage: "../../assets/blog-placeholder-3.jpg"
 
 I am going to work as an embedded software developer in May, so I thought I should feel cozy with x86. The only experience I have with x86 is in a dissassembler context... so be warned! This may be messy.
 
-I wrote this little fellow which simply prints a given number in octal using recursion :] 
+I wrote this little fellow which simply prints a given number in octal using recursion :]
 
-
-    
 ```asm
 .text
 .global _start # Loader
@@ -61,12 +59,7 @@ nums:
     .ascii "01234567"
 ```
 
-
-
-
 To all the potential employers out there, here is a bonus... fizz buzz :3
-
- 
 
 ```asm
 .text
@@ -79,7 +72,7 @@ _start:
     movl $0, 8(%esp) # 3 counter
     movl $0, 4(%esp) # 5 counter
     movl $0, 0(%esp) # Main counter
-loop:   
+loop:
 
 # fizz?
     movl 8(%esp), %eax

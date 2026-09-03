@@ -9,7 +9,7 @@ I always love nice colour coded debug messages, but all of the adb wrappers that
 
 So I rigged up this little bash script to neatly colour logcat.
 
-```bash    
+```bash
 #!/bin/bash
 
 # Argument 1 is the optional log tag name.
@@ -27,5 +27,3 @@ s/^V.*$/\e[32m$&\e[0m/g;
 ```
 
 As a bonus, you may specify your application tag name as the first argument to only show the output for messages with that tag. Note that it will also only show error-level messages from AndroidRuntime. (This is so that stack traces will be visible and such).
-
-

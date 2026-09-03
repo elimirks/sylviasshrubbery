@@ -11,7 +11,7 @@ However! Using [Euclid's Algorithm](http://en.wikipedia.org/wiki/Greatest_common
 
 I liked the algorithm, so I wrote this little program to calculate it.
 
-```c    
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -37,8 +37,6 @@ int main(int argc, char** argv) {
 	return 0;
 }
 ```
-    
-
 
 In action:
 
@@ -59,9 +57,5 @@ Calculations:
 
 gcd(120546, 54201) = 3
 ```
-    
-
 
 Therefore the greatest common divisor is 3, so the simplified fraction is 40182/18067. As proven by Euclid, these are the lowest terms of the requested rational number. By hand, this would only take 10 simple calculations!
-
-
