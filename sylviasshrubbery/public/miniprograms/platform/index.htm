@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="jquery-3.1.1.min.js"></script>
+        <style>
+         body {
+             margin: 0px;
+             padding: 0px;
+             /*overflow: hidden;*/
+         }
+         #cameraContainer {
+             margin-left: -32px;
+         }
+
+         #container {
+             margin: 0px;
+             padding: 0px;
+         }
+
+         /* Tile styles */
+
+         .block {
+             position: absolute;
+             background-color: green;
+         }
+
+         .retroTile {
+             background-color: green;
+             border: 1px solid black;
+         }
+
+         .player {
+             background-color: red;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="cameraContainer">
+            <div id="container"></div>
+        </div>
+        <script src="platform.js"></script>
+        <script>
+         $(function() {
+             init($('#container'));
+         });
+        </script>
+    </body>
+</html>

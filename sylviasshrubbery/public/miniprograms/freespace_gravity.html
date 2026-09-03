@@ -1,0 +1,196 @@
+<html>
+<body style="padding:0px; margin:0px;">
+	<canvas id="canvas" width="500" height="500" style="border:1px solid #000000;">
+	</canvas>
+</body>
+<script>
+var canvas = document.getElementById("canvas");
+
+var objects = [ ];
+
+var mouseX = 0, mouseY = 0;
+var draggedMouseX = 0, draggedMouseY = 0;
+
+canvas.addEventListener("mousedown", function(ev) {
+	mouseX = ev.clientX;
+	mouseY = ev.clientY;
+}, false);
+canvas.addEventListener("mousemove", function(ev) {
+	draggedMouseX = ev.clientX;
+	draggedMouseY = ev.clientY;
+}, false);
+canvas.addEventListener("mouseup", function(ev) {
+	var xVel = ev.clientX - mouseX;
+	var yVel = mouseY - ev.clientY;
+	objects.push(new Ball(mouseX, mouseY, xVel, yVel));
+	mouseX = mouseY = 0;
+}, false);
+
+var ctx = canvas.getContext("2d");
+setInterval(function () {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	// Draw the 'shooting' line
+	if (mouseX != 0 && mouseY != 0) {
+		var gradient = ctx.createLinearGradient(mouseX, mouseY, draggedMouseX, draggedMouseY);
+		gradient.addColorStop("0", "white");
+		gradient.addColorStop("1.0", "black");
+
+		ctx.beginPath();
+		ctx.moveTo(mouseX, mouseY);
+		ctx.lineTo(draggedMouseX, draggedMouseY);
+		ctx.strokeStyle = gradient;
+		ctx.stroke();
+	}
+
+	for (var i = 0; i < objects.length; i++) {
+		var ball = objects[i];
+		ball.tick(.1);
+		ball.draw(ctx);
+	}
+}, 10);
+
+function randomColor() {
+	var r = Math.floor(Math.random() * 256);
+	var g = Math.floor(Math.random() * 256);
+	var b = Math.floor(Math.random() * 256);
+	return new Color(r, g, b);
+}
+
+function Color(r, g, b) {
+	this.r = r;
+	this.g = g;
+	this.b = b;
+
+	this.getHtmlColor = function() {
+		return 'rgb(' + this.r +', ' + this.g + ',' + this.b +')';
+	}
+
+	this.getAsVector = function() {
+		return [this.r, this.g, this.b];
+	}
+}
+
+function volumeForRadius(r) {
+	return (4/3) * Math.PI * Math.pow(r, 3);
+}
+
+function radiusForVolume(v) {
+	return Math.cbrt((3/4) * v / Math.PI);
+}
+
+function Ball(x, y, xVel, yVel) {
+	this.radius = 5;
+	this.mass = 1;
+	this.x = x;
+	this.y = y;
+	this.xVel = xVel;
+	this.yVel = yVel;
+	this.color = randomColor();
+
+	this.tick = function(time) {
+		var accelerationVector = this.createAccelerationVector(time);
+
+		this.xVel += accelerationVector[0];
+		this.yVel += accelerationVector[1];
+
+		this.x += this.xVel*time;
+		this.y -= this.yVel*time;
+	}
+
+	this.draw = function(ctx) {
+		ctx.beginPath();
+		ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+		ctx.fillStyle = this.color.getHtmlColor();
+		ctx.fill();
+		ctx.strokeStyle = "black";
+		ctx.stroke();
+	}
+
+	this.createAccelerationVector = function(elapsedTime) {
+		var xAccel = 0;
+		var yAccel = 0;
+
+		for (var i = 0; i < objects.length; i++) {
+			if (objects[i] == this) {
+				continue;
+			}
+
+			var objectX = objects[i].x;
+			var objectY = objects[i].y;
+
+			var distanceX = objectX - this.x;
+			var distanceY = objectY - this.y;
+			var distance = Math.sqrt(distanceX*distanceX + distanceY*distanceY);
+			if (distance <= (this.radius + objects[i].radius)) {
+				this.mergeWith(objects[i]);
+				objects.splice(i, 1);
+				break; // Just cut it because I was lazy :3
+			}
+
+			// "5" is just an arbitrary gravitational constant.
+			var force = 5*(objects[i].mass*this.mass)/(distance*distance);
+			var velocity = Math.sqrt(2*force/this.mass);
+
+			var directionVector = [
+				distanceX/distance,
+				distanceY/distance,
+			];
+
+			xAccel += velocity * directionVector[0];
+			yAccel -= velocity * directionVector[1];
+		}
+
+		return [xAccel, yAccel];
+	}
+
+	this.mergeWith = function(obj) {
+		if (obj.mass > this.mass) {
+			this.x = obj.x;
+			this.y = obj.y;
+		}
+
+		this.mergeVelocityWith(obj);
+		this.mergeSizeWith(obj);
+		this.mergeColorWith(obj);
+	}
+
+	this.mergeVelocityWith = function(obj) {
+		var velocityVector = this.mergeVectorsWithWeights(
+			[this.xVel, this.yVel], [obj.xVel, obj.yVel],
+			this.mass, obj.mass);
+	
+		this.mass += obj.mass;
+		this.xVel = velocityVector[0];
+		this.yVel = velocityVector[1];
+	}
+
+	this.mergeSizeWith = function(obj) {
+		var thisVolume = volumeForRadius(this.radius);
+		var objVolume = volumeForRadius(obj.radius);
+		this.radius = radiusForVolume(thisVolume + objVolume);
+	}
+
+	this.mergeColorWith = function(obj) {
+		var colorVector = this.mergeVectorsWithWeights(
+			this.color.getAsVector(), obj.color.getAsVector(),
+			this.mass, obj.mass);
+		this.color = new Color(
+			Math.floor(colorVector[0]),
+			Math.floor(colorVector[1]),
+			Math.floor(colorVector[2]));
+	}
+
+	this.mergeVectorsWithWeights = function(vector1, vector2, weight1, weight2) {
+		var weightedVector = [];
+		for (var i = 0; i < vector1.length; i++) {
+			var e1 = vector1[i];
+			var e2 = vector2[i];
+			weightedVector[i] = (weight1*e1 + weight2*e2) / (weight1 + weight2);
+		}
+		return weightedVector;
+	}
+}
+</script>
+</html>
+
