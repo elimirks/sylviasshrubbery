@@ -1,3 +1,7 @@
+# Sylvia's Shrubbery
+
+This is the source code for my personal website. Still very much a work in progress :)
+
 # Astro Starter Kit: Blog
 
 ```sh
