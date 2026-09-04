@@ -1,88 +1,114 @@
 <html>
-<body style="padding:0px; margin:0px;">
-	<canvas id="canvas" width="500" height="500" style="border:1px solid #000000;">
-	</canvas>
+  <body style="padding: 0px; margin: 0px">
+    <canvas
+      id="canvas"
+      width="500"
+      height="500"
+      style="border: 1px solid #000000"
+    >
+    </canvas>
     <p>Click and drag!</p>
-</body>
-<script>
-var canvas = document.getElementById("canvas");
+  </body>
+  <script>
+    var canvas = document.getElementById("canvas");
 
-var gravity = 9.8;
-var objects = [];
+    var gravity = 9.8;
+    var objects = [];
 
-var mouseX = 0, mouseY = 0;
-var draggedMouseX = 0, draggedMouseY = 0;
+    var mouseX = 0,
+      mouseY = 0;
+    var draggedMouseX = 0,
+      draggedMouseY = 0;
 
-canvas.addEventListener("mousedown", function(ev) {
-	mouseX = ev.clientX;
-	mouseY = ev.clientY;
-}, false);
-canvas.addEventListener("mousemove", function(ev) {
-	draggedMouseX = ev.clientX;
-	draggedMouseY = ev.clientY;
-}, false);
-canvas.addEventListener("mouseup", function(ev) {
-	var xVel = ev.clientX - mouseX;
-	var yVel = mouseY - ev.clientY;
-	objects.push(new Ball(mouseX, mouseY, xVel, yVel));
-	mouseX = mouseY = 0;
-}, false);
+    canvas.addEventListener(
+      "mousedown",
+      function (ev) {
+        mouseX = ev.clientX;
+        mouseY = ev.clientY;
+      },
+      false,
+    );
+    canvas.addEventListener(
+      "mousemove",
+      function (ev) {
+        draggedMouseX = ev.clientX;
+        draggedMouseY = ev.clientY;
+      },
+      false,
+    );
+    canvas.addEventListener(
+      "mouseup",
+      function (ev) {
+        var xVel = ev.clientX - mouseX;
+        var yVel = mouseY - ev.clientY;
+        objects.push(new Ball(mouseX, mouseY, xVel, yVel));
+        mouseX = mouseY = 0;
+      },
+      false,
+    );
 
-var ctx = canvas.getContext("2d");
-setInterval(function () {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var ctx = canvas.getContext("2d");
+    setInterval(function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	// Draw the 'shooting' line
-	if (mouseX != 0 && mouseY != 0) {
-		var gradient = ctx.createLinearGradient(mouseX, mouseY, draggedMouseX, draggedMouseY);
-		gradient.addColorStop("0", "white");
-		gradient.addColorStop("1.0", "black");
+      // Draw the 'shooting' line
+      if (mouseX != 0 && mouseY != 0) {
+        var gradient = ctx.createLinearGradient(
+          mouseX,
+          mouseY,
+          draggedMouseX,
+          draggedMouseY,
+        );
+        gradient.addColorStop("0", "white");
+        gradient.addColorStop("1.0", "black");
 
-		ctx.beginPath();
-		ctx.moveTo(mouseX, mouseY);
-		ctx.lineTo(draggedMouseX, draggedMouseY);
-		ctx.strokeStyle = gradient;
-		ctx.stroke();
-	}
+        ctx.beginPath();
+        ctx.moveTo(mouseX, mouseY);
+        ctx.lineTo(draggedMouseX, draggedMouseY);
+        ctx.strokeStyle = gradient;
+        ctx.stroke();
+      }
 
-	for (var i = 0; i < objects.length; i++) {
-		var ball = objects[i];
-		ball.tick(.1);
-		ball.draw(ctx);
-	}
-}, 10);
+      for (var i = 0; i < objects.length; i++) {
+        var ball = objects[i];
+        ball.tick(0.1);
+        ball.draw(ctx);
+      }
+    }, 10);
 
-function randomColor() {
-	var r = Math.floor(Math.random() * 256);
-	var g = Math.floor(Math.random() * 256);
-	var b = Math.floor(Math.random() * 256);
-	return 'rgb(' + r +', ' + g + ',' + b +')';
-}
+    function randomColor() {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      return "rgb(" + r + ", " + g + "," + b + ")";
+    }
 
-function Ball(x, y, xVel, yVel) {
-	this.x = x;
-	this.y = y;
-	this.xVel = xVel;
-	this.yVel = yVel;
-	this.color = randomColor();
-	this.time = 0;
+    function Ball(x, y, xVel, yVel) {
+      this.x = x;
+      this.y = y;
+      this.xVel = xVel;
+      this.yVel = yVel;
+      this.color = randomColor();
+      this.time = 0;
 
-	this.tick = function(time) {
-		this.time += time;
-	}
+      this.tick = function (time) {
+        this.time += time;
+      };
 
-	this.draw = function(ctx) {
-		var xPos = this.x + this.xVel*this.time;
-		var yPos = this.y - this.yVel*this.time + (1/2)*gravity*this.time*this.time;
+      this.draw = function (ctx) {
+        var xPos = this.x + this.xVel * this.time;
+        var yPos =
+          this.y -
+          this.yVel * this.time +
+          (1 / 2) * gravity * this.time * this.time;
 
-		ctx.beginPath();
-		ctx.arc(xPos, yPos, 5, 0, 2 * Math.PI);
-		ctx.fillStyle = this.color;
-		ctx.fill();
-		ctx.strokeStyle = "black";
-		ctx.stroke();
-	}
-}
-</script>
+        ctx.beginPath();
+        ctx.arc(xPos, yPos, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+      };
+    }
+  </script>
 </html>
-

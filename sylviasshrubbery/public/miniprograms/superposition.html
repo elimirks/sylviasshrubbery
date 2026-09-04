@@ -1,129 +1,147 @@
 <html>
-<body>
-	<h1>Wave Superposition Simulator</h1>
-	<canvas id="canvas" width="500" height="500" style="border:1px solid #000000;">
-	</canvas>
-	<br>
-	<span>
-		Instructions: Press the buttons below, and see what happens.
-		<br>
-		Note: Wave amplitudes greater than 250 will go off the screen.
-	</span>
-	<br><br>
-	<button type="button" onclick="newWave('SineWave')">New Sine Wave</button>
-	<button type="button" onclick="newWave('SawWave')">New Saw Wave</button>
-	<button type="button" onclick="newWave('SquareWave')">New Square Wave</button>
-	<button type="button" onclick="popWave();">Delete Last Wave</button>
-	<br><br>
-	<b>Wave List:</b>
-	<br>
-	<span id="waveList" />
-</body>
-<script>
+  <body>
+    <h1>Wave Superposition Simulator</h1>
+    <canvas
+      id="canvas"
+      width="500"
+      height="500"
+      style="border: 1px solid #000000"
+    >
+    </canvas>
+    <br />
+    <span>
+      Instructions: Press the buttons below, and see what happens.
+      <br />
+      Note: Wave amplitudes greater than 250 will go off the screen.
+    </span>
+    <br /><br />
+    <button type="button" onclick="newWave('SineWave')">New Sine Wave</button>
+    <button type="button" onclick="newWave('SawWave')">New Saw Wave</button>
+    <button type="button" onclick="newWave('SquareWave')">
+      New Square Wave
+    </button>
+    <button type="button" onclick="popWave()">Delete Last Wave</button>
+    <br /><br />
+    <b>Wave List:</b>
+    <br />
+    <span id="waveList" />
+  </body>
+  <script>
+    var canvas = document.getElementById("canvas");
+    var waveList = document.getElementById("waveList");
+    var waves = [new SineWave(50, 1)];
 
-var canvas = document.getElementById("canvas");
-var waveList = document.getElementById("waveList");
-var waves = [
-	new SineWave(50, 1),
-];
+    function newWave(name) {
+      var amplitude = parseInt(prompt("Amplitude")) || 0;
+      var frequency = parseInt(prompt("Frequency")) || 0;
+      waves.push(new window[name](amplitude, frequency));
+      generateWaveListText();
+    }
 
-function newWave(name) {
-	var amplitude = parseInt(prompt("Amplitude")) || 0;
-	var frequency = parseInt(prompt("Frequency")) || 0;
-	waves.push(new window[name](amplitude, frequency));
-	generateWaveListText();
-}
+    function popWave() {
+      waves.pop();
+      generateWaveListText();
+    }
 
-function popWave() {
-	waves.pop();
-	generateWaveListText();
-}
+    function generateWaveListText() {
+      waveList.innerText = "";
+      for (var i = 0; i < waves.length; i++) {
+        waveList.innerText += waves[i].toString() + "\n";
+      }
+    }
+    generateWaveListText();
 
-function generateWaveListText() {
-	waveList.innerText = "";
-	for (var i = 0; i < waves.length; i++) {
-		waveList.innerText += waves[i].toString() + "\n";
-	}
-}
-generateWaveListText();
+    var SCREEN_HEIGHT = 500;
+    var SCREEN_WIDTH = 500;
 
-var SCREEN_HEIGHT = 500;
-var SCREEN_WIDTH  = 500;
+    var ctx = canvas.getContext("2d");
 
-var ctx = canvas.getContext("2d");
+    var start = new Date().getTime();
+    setInterval(function () {
+      var currentTime = new Date().getTime() - start;
 
-var start = new Date().getTime();
-setInterval(function () {
-	var currentTime = new Date().getTime() - start;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var t = 0; t < SCREEN_WIDTH; t += 2) {
+        var value = valueAtTime(currentTime - t);
+        drawPoint(ctx, SCREEN_WIDTH - t, SCREEN_HEIGHT / 2 + value);
+      }
+    }, 10);
 
-	for (var t = 0; t < SCREEN_WIDTH; t += 2) {
-		var value = valueAtTime(currentTime - t);
-		drawPoint(ctx, SCREEN_WIDTH - t, SCREEN_HEIGHT / 2 + value);
-	}
-}, 10);
+    function valueAtTime(time) {
+      var total = 0;
+      for (var i = 0; i < waves.length; i++) {
+        var wave = waves[i];
+        total += wave.getValue(time);
+      }
+      return total;
+    }
 
-function valueAtTime(time) {
-	var total = 0;
-	for (var i = 0; i < waves.length; i++) {
-		var wave = waves[i];
-		total += wave.getValue(time);
-	}
-	return total;
-}
+    function drawPoint(ctx, x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.fill();
+    }
 
-function drawPoint(ctx, x, y) {
-	ctx.beginPath();
-	ctx.arc(x, y, 2, 0, 2 * Math.PI);
-	ctx.fillStyle = 'rgb(0, 0, 0)';
-	ctx.fill();
-}
+    function SineWave(amplitude, frequency) {
+      this.amplitude = amplitude;
+      this.frequency = frequency;
 
-function SineWave(amplitude, frequency) {
-	this.amplitude = amplitude;
-	this.frequency = frequency;
+      this.getValue = function (time) {
+        var position = Math.PI * 2 * (time / 1000) * this.frequency;
+        return this.amplitude * Math.sin(position);
+      };
 
-	this.getValue = function(time) {
-		var position = Math.PI * 2 * (time / 1000) * this.frequency;
-		return this.amplitude * Math.sin(position);
-	}
+      this.toString = function () {
+        return (
+          "Sine Wave. Amplitude: " +
+          this.amplitude +
+          " (px) Frequency: " +
+          this.frequency +
+          " (Hz)"
+        );
+      };
+    }
 
-	this.toString = function() {
-		return "Sine Wave. Amplitude: " + this.amplitude
-			+ " (px) Frequency: " + this.frequency + " (Hz)";
-	}
-}
+    function SawWave(amplitude, frequency) {
+      this.amplitude = amplitude;
+      this.frequency = frequency;
 
-function SawWave(amplitude, frequency) {
-	this.amplitude = amplitude;
-	this.frequency = frequency;
+      this.getValue = function (time) {
+        var position = Math.PI * 2 * (time / 1000) * this.frequency;
+        return this.amplitude * Math.asin(Math.cos(position));
+      };
 
-	this.getValue = function(time) {
-		var position = Math.PI * 2 * (time / 1000) * this.frequency;
-		return this.amplitude * Math.asin(Math.cos(position));
-	}
+      this.toString = function () {
+        return (
+          "Saw Wave. Amplitude: " +
+          this.amplitude +
+          " (px) Frequency: " +
+          this.frequency +
+          " (Hz)"
+        );
+      };
+    }
 
-	this.toString = function() {
-		return "Saw Wave. Amplitude: " + this.amplitude
-			+ " (px) Frequency: " + this.frequency + " (Hz)";
-	}
-}
+    function SquareWave(amplitude, frequency) {
+      this.amplitude = amplitude;
+      this.frequency = frequency;
 
-function SquareWave(amplitude, frequency) {
-	this.amplitude = amplitude;
-	this.frequency = frequency;
+      this.getValue = function (time) {
+        var position = Math.PI * 2 * (time / 1000) * this.frequency;
+        return this.amplitude * (Math.sin(position) >= 0 ? 1 : -1);
+      };
 
-	this.getValue = function(time) {
-		var position = Math.PI * 2 * (time / 1000) * this.frequency;
-		return this.amplitude * (Math.sin(position) >= 0 ? 1 : -1)
-	}
-
-	this.toString = function() {
-		return "Square Wave. Amplitude: " + this.amplitude
-			+ " (px) Frequency: " + this.frequency + " (Hz)";
-	}
-}
-</script>
+      this.toString = function () {
+        return (
+          "Square Wave. Amplitude: " +
+          this.amplitude +
+          " (px) Frequency: " +
+          this.frequency +
+          " (Hz)"
+        );
+      };
+    }
+  </script>
 </html>
-

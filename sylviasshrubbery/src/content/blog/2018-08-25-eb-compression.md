@@ -5,8 +5,6 @@ pubDate: "Aug 25 2018"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
-{{< load-photoswipe >}}
-
 For a while, I've been interested in image compression algorithms. Specifically, [lossless](https://en.wikipedia.org/wiki/Lossless_compression) image compression algorithms. I thought of a really simple area-based lossless compression algorithm on Friday, so I wrote a small program to compress [PPM](https://en.wikipedia.org/wiki/Netpbm_format) files. The compressed format, Eli Bitmap (EB), stores rectangles of identical color as "regions" in the bitmap data. Any pixels that could not be reasonably compressed using into rectangles would be appended after the rectangle region definitions. If you want to see the program, [here it is](https://github.com/elimirks/miscprojects/tree/master/eb_compression/src).
 
 In theory, images with large blank regions should compress the best. Images with rapidly varying texture don't have as many rectangle regions, so they won't work as well.

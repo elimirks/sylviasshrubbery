@@ -5,6 +5,8 @@ pubDate: "Jun 08 2024"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+
 ## Introduction
 
 Once in a while, you hear someone propose "maybe our universe is in a (computer) simulation". It goes something along the lines of "we can already basically simulate the universe, so it's not a stretch to assume we're in a simulation".
@@ -19,13 +21,13 @@ The [Ruliad](https://writings.stephenwolfram.com/2021/11/the-concept-of-the-ruli
 - C: Our universe is computable
 - R: Our universe is in the Ruliad
 
-$$S \Rightarrow C$$
-$$R \iff C$$
-$$\therefore S \Rightarrow R$$
+$$
+    S \Rightarrow C \\
+    R \iff C \\
+    \therefore S \Rightarrow R
+$$
 
-By Bayes Theorem:
-
-$$(P(S) \land P(R)) \le P(R)$$
+By Bayes Theorem: $$(P(S) \land P(R)) \le P(R)$$
 
 i.e., it's more likely for us to be in the Ruliad than both in the Ruliad _and_ in a simulation.
 

@@ -5,27 +5,31 @@ pubDate: "Oct 30 2021"
 heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+
 ## Intro
 
 ![Full Mandelbrot Set](/images/glsl-mandelbrot/fullbrot.png)
 
-While working on magicpixel, I wanted to try rendering the Mandelbrot Set. I guess as a \\((sideproject)^2\\). Magicpixel was already using OpenGL for rendering, so it was pretty simple to reuse all the boilerplate code. I pretty much just had to chop out a bunch of unnecessary code and change the fragment shader (more on that later). Here's the [Github repo](https://github.com/elimirks/miscprojects/tree/master/glsl_mandelbrot) for the full project source code.
+While working on magicpixel, I wanted to try rendering the Mandelbrot Set. I guess as a $$(sideproject)^2$$. Magicpixel was already using OpenGL for rendering, so it was pretty simple to reuse all the boilerplate code. I pretty much just had to chop out a bunch of unnecessary code and change the fragment shader (more on that later). Here's the [Github repo](https://github.com/elimirks/miscprojects/tree/master/glsl_mandelbrot) for the full project source code.
 
 The Mandelbrot Set is a fractal defined as the following:
 
-For every point in complex form \\(c = x + yi\\), \\(z\\) does not diverge.
+For every point in complex form $$c = x + yi$$, $$z$$ does not diverge.
 
-$$\forall n \ge 0$$
-$$z_0 = 0$$
-$$z_{n+1} = z_n^2 + c$$
+$$
+\forall n \ge 0\\
+z_0 = 0\\
+z_{n+1} = z_n^2 + c\\
+$$
 
 ## Mandelbrot Set Approximation
 
 ![Green Boi](/images/glsl-mandelbrot/green_boi.png)
 
-To get an approximation, we could say \\(z\\) does not diverge _to a high value of_ \\(n\\), instead of "z does not diverge at all". The higher maximum value of \\(n\\), the closer the approximation is to the exact set. However, using a higher number means it will be more computationally expensive. I learned about this technique in a Computational Physics course, but the version I wrote back then was rendering on a single CPU thread, so was too slow to interact with.
+To get an approximation, we could say $$z$$ does not diverge _to a high value of_ $$n$$, instead of "z does not diverge at all". The higher maximum value of $$n$$, the closer the approximation is to the exact set. However, using a higher number means it will be more computationally expensive. I learned about this technique in a Computational Physics course, but the version I wrote back then was rendering on a single CPU thread, so was too slow to interact with.
 
-Here's a snipped to decide, approximately, if the point \\(x,y\\) is in the Mandelbrot set, written in GLSL.
+Here's a snipped to decide, approximately, if the point $$(x,y)$$ is in the Mandelbrot set, written in GLSL.
 
 ```c
 bool in_set(float x, float y) {
