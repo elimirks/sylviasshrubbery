@@ -2,10 +2,8 @@
 title: rm -rf roulette
 description: rm -rf roulette
 pubDate: "Jun 25 2015"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/rm-rf-roulette.jpg"
 ---
-
-{{< load-photoswipe >}}
 
 So at work, I recently migrated over from my Linux box to an OS X box, and the old box will soon be formatted... so I decided to have a bit of fun with it!
 
@@ -26,10 +24,10 @@ UPDATE:
 
 Before:
 
-{{< figure src="/images/misc/rmrf_before.png" >}}
+![before](/images/misc/rmrf_before.png)
 
 After:
 
-{{< figure src="/images/misc/rmrf_after.png" >}}
+![after](/images/misc/rmrf_after.png)
 
 I would say this is a success.

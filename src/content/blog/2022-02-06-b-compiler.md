@@ -2,7 +2,7 @@
 title: "b64: B Compiler for x86_64 Linux"
 description: "b64: B Compiler for x86_64 Linux"
 pubDate: "Feb 06 2022"
-heroImage: "../../assets/programmer-cat.jpg"
+heroImage: "../../assets/b-language-banner.jpg"
 ---
 
 # Why?!

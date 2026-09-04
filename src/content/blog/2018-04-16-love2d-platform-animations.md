@@ -2,7 +2,7 @@
 title: LÖVE Platform Animations
 description: LÖVE Platform Animations
 pubDate: "Apr 16 2018"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/ninja-love.png"
 ---
 
 My introduction to programming was game development. I started with ActionScript 2 (R.I.P. Macromedia Flash), then moved on to C++ with [SFML](https://www.sfml-dev.org/) (to this day, it's my go-to C++ multimedia framework). I also dabbled a bit with [LÖVE](https://love2d.org), a Lua game framework.

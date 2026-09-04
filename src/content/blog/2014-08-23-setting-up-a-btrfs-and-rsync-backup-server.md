@@ -2,7 +2,7 @@
 title: Setting up a BTRFS and rsync backup server
 description: Setting up a BTRFS and rsync backup server
 pubDate: "Aug 23 2014"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/butter-hard-drive.jpg"
 ---
 
 **Who is this for?**
