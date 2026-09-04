@@ -2,7 +2,7 @@
 title: "GLSL Mandelbrot"
 description: "GLSL Mandelbrot"
 pubDate: "Oct 30 2021"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/green-mandelbrot.png"
 ---
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />

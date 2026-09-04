@@ -2,7 +2,7 @@
 title: Quaternion Visualizer
 description: Quaternion Visualizer
 pubDate: "Dec 04 2019"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/quaternion-banner.png"
 ---
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />

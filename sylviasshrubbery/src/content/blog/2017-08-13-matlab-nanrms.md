@@ -2,7 +2,7 @@
 title: Matlab nanrms
 description: Matlab nanrms
 pubDate: "Aug 13 2017"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 I often find the Matlab [nanmean](https://www.mathworks.com/help/stats/nanmean.html) function very useful. Unfortunately there is no builtin to behave similarly for RMS. So here is a snippet which may yield use!

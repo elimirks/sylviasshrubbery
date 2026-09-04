@@ -2,7 +2,7 @@
 title: "Heavy Writes, Cheap Reads"
 description: "Keeping I/O bandwidth in mind when dealing with reads and writes"
 pubDate: 2026-01-28T13:22:22-03:00
-heroImage: "../../assets/blog-placeholder-2.jpg"
+heroImage: "../../assets/crab-by-the-sea.jpg"
 ---
 
 ## Background

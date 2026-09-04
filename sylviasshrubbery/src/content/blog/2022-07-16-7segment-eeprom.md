@@ -2,7 +2,7 @@
 title: 7 Segment Controller via EEPROM
 description: 7 Segment Controller via EEPROM
 pubDate: Jul 16 2022
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/7seg_e.jpg"
 ---
 
 # What's a 7 Segment Display?

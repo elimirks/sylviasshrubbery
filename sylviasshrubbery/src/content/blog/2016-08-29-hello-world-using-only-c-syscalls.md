@@ -2,7 +2,7 @@
 title: Hello World, using only C syscalls
 description: Hello World, using only C syscalls
 pubDate: "Aug 29 2016"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 I'm currently working on implementing system calls in BlarbVM (see my previous post on it), so I am trying to get comfortable using only syscalls.

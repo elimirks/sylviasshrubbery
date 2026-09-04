@@ -2,7 +2,7 @@
 title: BlarbVM/BlarbLang
 description: BlarbVM/BlarbLang
 pubDate: "Aug 23 2016"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/blarb-logo.jpg"
 ---
 
 [Esoteric programming](https://en.wikipedia.org/wiki/Esoteric_programming_language) languages are awesome. So I decided to create one, which I call [BlarbLang](https://github.com/elimirks/BlarbVM/).

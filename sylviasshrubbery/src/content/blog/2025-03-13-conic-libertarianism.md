@@ -2,7 +2,7 @@
 title: "Libertarianism: A Geometric Perspective"
 description: "Libertarianism: A Geometric Perspective"
 pubDate: "Mar 13 2025"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/the-political-thinker.jpg"
 ---
 
 ## TL;DR

@@ -2,7 +2,7 @@
 title: Dabbling around with x86
 description: Dabbling around with x86
 pubDate: "Apr 19 2017"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 I am going to work as an embedded software developer in May, so I thought I should feel cozy with x86. The only experience I have with x86 is in a dissassembler context... so be warned! This may be messy.

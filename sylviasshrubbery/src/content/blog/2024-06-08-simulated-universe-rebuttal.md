@@ -2,7 +2,7 @@
 title: "No, we don't live in a simulated universe. Ruliad!? That's more like it!"
 description: "No, we don't live in a simulated universe. Ruliad!? That's more like it!"
 pubDate: "Jun 08 2024"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/ruliad-hero.png"
 ---
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />

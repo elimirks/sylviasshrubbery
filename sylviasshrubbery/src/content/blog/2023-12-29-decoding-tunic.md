@@ -2,7 +2,7 @@
 title: "Decoding Tunic"
 description: "Decoding Tunic"
 pubDate: "Dec 29 2023"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/fox-decoder-adventurer.jpg"
 ---
 
 # Warning!

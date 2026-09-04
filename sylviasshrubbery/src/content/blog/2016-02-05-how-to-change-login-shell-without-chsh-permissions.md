@@ -2,7 +2,7 @@
 title: How to change login shell without chsh permissions
 description: How to change login shell without chsh permissions
 pubDate: "Feb 05 2016"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 On the University of Toronto servers and Linux lab computers, the default shell is tcsh, and we don't have chsh access _shakes fist_.

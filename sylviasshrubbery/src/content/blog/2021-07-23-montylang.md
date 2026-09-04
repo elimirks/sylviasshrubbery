@@ -2,7 +2,7 @@
 title: Monty Programming Language
 description: Monty Programming Language
 pubDate: "Jul 23 2021"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 # Origins

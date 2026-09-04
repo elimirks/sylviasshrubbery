@@ -2,7 +2,7 @@
 title: "GDB Basics: Stack Traces"
 description: "GDB Basics: Stack Traces"
 pubDate: "Mar 16 2016"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/programmer-cat.jpg"
 ---
 
 C beginners are often very lost when their program crashes from a segmentation fault or similar issues. Most of them know about GDB but are pretty intimidated by it.
