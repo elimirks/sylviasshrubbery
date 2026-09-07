@@ -98,6 +98,54 @@ import Layout from "../layouts/BlogPost.astro";
       <span class="year">1996</span><span class="desc">Hello, world</span>
     </div>
   </div>
+
+  <h3 class="sub-heading">LARP Bio</h3>
+  <div class="larp-bio">
+    <h4>Background</h4>
+    <p>
+      Sylwia "Żmija Zygzakowata" Mirecka is a rogue from the Polish-Lithuanian
+      Commonwealth of noble blood (Szlachta). Her father is the petty lord of
+      the small village of Mircze in the Lublin Voivodeship (Województwo
+      Lubelskie).
+    </p>
+    <p>
+      Her mother was betroshed to Sylwia's father from a lord in The Kingdom of
+      Scotland. Sylwia ran away from home when before her wedding - she didn't
+      like the idea of being married off to a landlord in Bohemia for a sack of
+      gold!
+    </p>
+
+    <p>
+      It's not known exactly how Sylwia survives as a vegabond, but it's
+      rumoured that she accepts legally-questionable contracts.
+    </p>
+
+    <h4>Aliases</h4>
+    <ul>
+      <li><strong>Slavic areas:</strong> Sylwia "Żmija Zygzakowata" Mirecka</li>
+      <li><strong>Germanic regions:</strong> Sylvia von Mirtzsche</li>
+      <li><strong>Latin world:</strong> Silvia de Mircia / Silvia Mirczeska</li>
+      <li><strong>British Isles:</strong> Sylvia "The Adder" of Mirche</li>
+      <li>
+        <strong>The Americas:</strong> Sylvia "Scorpion" Mirecki / Silvia "el Áspid"
+        de Mirche
+      </li>
+    </ul>
+    <h4>Catch Phrases</h4>
+    <ul>
+      <li>"Strzeż się Żmii!"</li>
+      <li>"Ein Biss genügt"</li>
+      <li>"Unter den Rosen schläft die Natter"</li>
+      <li>"Hasta la vista, milord"</li>
+    </ul>
+
+    <h4>Geographical Context</h4>
+    <img
+      src="/images/misc/plc_1634_map.jpg"
+      alt="PLC 1632 Map"
+      style="max-width: 100%; height: auto; margin-bottom: 1em;"
+    />
+  </div>
 </Layout>
 
 <style>
@@ -108,18 +156,21 @@ import Layout from "../layouts/BlogPost.astro";
     margin: 0;
     padding: 0;
   }
+
   .timeline-row {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 1.5em;
   }
+
   .year {
     min-width: 4em;
     font-weight: bold;
     color: #555;
     flex-shrink: 0;
   }
+
   .desc {
     flex: 1;
   }
@@ -135,5 +186,9 @@ import Layout from "../layouts/BlogPost.astro";
       min-width: 0;
       margin-bottom: 0.1em;
     }
+  }
+
+  .sub-heading {
+    margin-top: 2em;
   }
 </style>
