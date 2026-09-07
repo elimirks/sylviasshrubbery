@@ -1,0 +1,209 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={"hi"} description={"there"} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="section pastel-pink">
+        <div class="section-content">
+          <h2>Portrayal</h2>
+          <img
+            src="/images/art/portrayal.jpg"
+            alt="Portrayal"
+            class="full-width"
+          />
+        </div>
+      </div>
+
+      <div class="section pastel-blue">
+        <div class="section-content">
+          <h2>Ideas</h2>
+          <img
+            src="/images/art/attribute.jpg"
+            alt="Attribution"
+            class="full-width"
+          />
+
+          <select>
+            <option>When</option>
+            <option>From where</option>
+            <option>To whom</option>
+            <option>From what</option>
+          </select>
+
+          <span> should we </span>
+
+          <select>
+            <option>erase</option>
+            <option>borrow</option>
+            <option>commission</option>
+            <option>attribute</option>
+            <option>strengthen</option>
+            <option>discover</option>
+            <option>introduce</option>
+            <option>ignore</option>
+            <option>imagine</option>
+            <option>envision</option>
+            <option>invent</option>
+          </select>
+
+          <span> our ideas?</span>
+
+          <br />
+          <br />
+
+          <select>
+            <option>Does art</option>
+            <option>Does education</option>
+            <option>Does literature</option>
+            <option>Does history</option>
+            <option>Do friends</option>
+            <option>Does entertainment</option>
+            <option>Does family</option>
+            <option>Does society</option>
+            <option>Does communication</option>
+            <option>Do communities</option>
+          </select>
+
+          <span> influence us?</span>
+
+          <br />
+          <br />
+
+          <span>Is </span>
+
+          <select>
+            <option>inquiring</option>
+            <option>understanding</option>
+            <option>deliberating</option>
+            <option>thinking</option>
+            <option>caring</option>
+            <option>appreciating</option>
+            <option>creativity</option>
+          </select>
+
+          <select>
+            <option>about</option>
+            <option>inside</option>
+            <option>outside</option>
+            <option>around</option>
+            <option>regarding</option>
+          </select>
+
+          <select>
+            <option>the combination</option>
+            <option>reality</option>
+            <option>anatomy</option>
+            <option>the box</option>
+            <option>perspective</option>
+            <option>technology</option>
+            <option>the mind</option>
+            <option>the product</option>
+            <option>a person</option>
+            <option>worldview</option>
+          </select>
+
+          <span> attributable to this?</span>
+        </div>
+      </div>
+
+      <div class="section pastel-purple">
+        <div class="section-content">
+          <h2>Grasp</h2>
+          <img src="/images/art/grasp.jpg" alt="Grasp" class="full-width" />
+        </div>
+      </div>
+
+      <div class="section pastel-green">
+        <div class="section-content">
+          <h2>Conway</h2>
+          <img src="/images/art/conway.jpg" alt="Conway" class="full-width" />
+
+          <p class="quote">
+            Given the axioms, if the two experimenters in question are free to
+            make choices about what measurements to take, then the results of
+            the measurements cannot be determined by anything previous to the
+            experiments.
+          </p>
+
+          <p>26 December 1937 - 11 April 2020</p>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  h2 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    color: #374151;
+  }
+
+  img.full-width {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+  }
+
+  p.quote {
+    font-style: italic;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    background-color: #f9fafb88;
+    border-left: 4px solid #d1d5db;
+    padding: 1em 1.5em;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  div.section {
+    margin-left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+  }
+
+  div.section-content {
+    max-width: 720px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-bottom: 5em;
+  }
+
+  .pastel-yellow {
+    background-color: #faedcb;
+  }
+
+  .pastel-green {
+    background-color: #c9e4de;
+  }
+
+  .pastel-blue {
+    background-color: #c6def1;
+  }
+
+  .pastel-purple {
+    background-color: #dbcdf0;
+  }
+
+  .pastel-pink {
+    background-color: #f2c6de;
+  }
+
+  .pastel-orange {
+    background-color: #f7d9c4;
+  }
+</style>
