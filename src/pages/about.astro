@@ -146,6 +146,57 @@ import Layout from "../layouts/BlogPost.astro";
       style="max-width: 100%; height: auto; margin-bottom: 1em;"
     />
   </div>
+
+  <h3 class="sub-heading">Licenses</h3>
+  <p>
+    The written works on this website, excluding source code, are licensed under
+    the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"
+      >Creative Commons Attribution 4.0 International License</a>
+  </p>
+
+  <p>
+    Source code both in blog posts and on the public Git repository are licensed
+    under the <a
+      href="https://fedoraproject.org/wiki/Licensing/BSD_with_Attribution"
+      target="_blank">BSD with Attribution License</a
+    >:
+  </p>
+
+  <pre
+    class="license">
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+
+ 3. Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+ 4. Redistributions of any form whatsoever must retain the following
+    acknowledgment: 'This product includes software developed by 
+    "Sylvia Mirecki" (https://sylviasshrubbery.ca/).'
+    
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  </pre>
 </Layout>
 
 <style>
@@ -190,5 +241,11 @@ import Layout from "../layouts/BlogPost.astro";
 
   .sub-heading {
     margin-top: 2em;
+  }
+
+  .license {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    white-space: pre-wrap;
   }
 </style>

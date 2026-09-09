@@ -66,7 +66,7 @@
 
 <style>
   #cat-button {
-    font-size: 3rem;
+    font-size: 4rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -82,7 +82,7 @@
     z-index: 2;
     white-space: nowrap;
     position: absolute;
-    transform: translateY(-50%) translateX(1.8em);
+    transform: translateY(-50%) translateX(2.5em);
     left: 50%;
     /* Adjust translateX for spacing */
     pointer-events: none;
@@ -100,5 +100,17 @@
     justify-content: center;
     gap: 0.5em;
     position: relative;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+  }
+
+  #cat-button {
+    transform: scale(0.8);
+    transition: transform 0.2s ease-in-out;
+  }
+  #cat-button:hover {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
   }
 </style>

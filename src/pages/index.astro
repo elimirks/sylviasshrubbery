@@ -13,16 +13,28 @@ import Cat from "../widgets/Cat.astro";
   <body>
     <Header />
     <main>
-      <h1>Welcome!</h1>
+      <h1>👋 Welcome 👋</h1>
 
       <img
         src="/images/logo/logo_graphic.png"
         alt="Sylvia's Shrubbery"
         class="logo-icon"
       />
-      <p>idk what to put on the home page, check out the other pages</p>
+
+      <p style="margin-bottom: 2em">
+        My name is Sylvia Mirecki. I'm a Canadian programmer with a focus on
+        high performance and distributed computing, especially with Rust! I
+        usually write about technical topics in my blog, but occasionally other
+        topics as well. I'm also a strong believer in fun-oriented-programming
+        when possible :)
+      </p>
 
       <Cat />
+      <p style="margin-top: 2em;">
+        Until I think of something better to put here, check out my <a
+          href="/blog">blog</a
+        > or <a href="/about">about page</a>!
+      </p>
     </main>
     <Footer />
   </body>
@@ -37,11 +49,11 @@ import Cat from "../widgets/Cat.astro";
   img.logo-icon {
     align-self: center;
     max-width: 200px;
-    margin: 3em 0;
+    margin: 2em 0;
   }
 
   h1 {
     text-align: center;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 </style>
