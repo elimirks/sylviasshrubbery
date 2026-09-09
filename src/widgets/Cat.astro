@@ -1,0 +1,104 @@
+<div id="cat-widget">
+  <button id="cat-button">😺</button>
+  <span id="cat-bubble" style="display:none;"></span>
+</div>
+
+<script>
+  const cats = ["😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"];
+
+  const expressions = [
+    "Nyan",
+    "Meow",
+    "Maao",
+    "Purr",
+    "Hiss",
+    "Hissssss",
+    "Mrrrow",
+    "Mew",
+    "喵喵",
+    "Miau",
+    "Miaou",
+    "Miao",
+    "Мяу",
+    "Meo meo",
+    "Mjäu",
+    "Woof",
+  ];
+
+  const punctuation = ["", ".", "!", "!!", "...", "?", "‽"];
+
+  let catIndex = 0;
+  let exprIndex = -1;
+
+  let bubbleTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  const button = document.getElementById("cat-button");
+  const bubble = document.getElementById("cat-bubble");
+
+  function handleClick() {
+    const oldIndex = catIndex;
+    catIndex = Math.floor(Math.random() * cats.length);
+    if (catIndex === oldIndex) {
+      catIndex = (catIndex + 1) % cats.length;
+    }
+    if (button) button.textContent = cats[catIndex];
+    if (bubble) {
+      const oldIndex = exprIndex;
+      exprIndex = Math.floor(Math.random() * expressions.length);
+      if (exprIndex === oldIndex) {
+        exprIndex = (exprIndex + 1) % expressions.length;
+      }
+      const punctuationIndex = Math.floor(Math.random() * punctuation.length);
+      const punc = punctuation[punctuationIndex];
+
+      bubble.textContent = expressions[exprIndex] + punc;
+      bubble.style.display = "inline-block";
+
+      if (bubbleTimeout) clearTimeout(bubbleTimeout);
+      bubbleTimeout = setTimeout(() => {
+        bubble.style.display = "none";
+      }, 3000);
+    }
+  }
+
+  button?.addEventListener("click", handleClick);
+</script>
+
+<style>
+  #cat-button {
+    font-size: 3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+  }
+  #cat-bubble {
+    display: none;
+    background: #f2c6de;
+    border-radius: 1em;
+    border-bottom-left-radius: 0;
+    padding: 0.5em 1em;
+    font-size: 1.2rem;
+    z-index: 2;
+    white-space: nowrap;
+    position: absolute;
+    transform: translateY(-50%) translateX(1.8em);
+    left: 50%;
+    /* Adjust translateX for spacing */
+    pointer-events: none;
+  }
+
+  /* Container for positioning */
+  #cat-button,
+  #cat-bubble {
+    vertical-align: middle;
+  }
+
+  #cat-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    position: relative;
+  }
+</style>
