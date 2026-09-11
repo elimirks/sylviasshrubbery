@@ -13,7 +13,7 @@ import Cat from "../widgets/Cat.astro";
   <body>
     <Header />
     <main>
-      <h1>👋 Welcome 👋</h1>
+      <h1><span class="wave">👋</span> Welcome <span class="wave">👋</span></h1>
 
       <img
         src="/images/logo/logo_graphic.png"
@@ -55,5 +55,11 @@ import Cat from "../widgets/Cat.astro";
   h1 {
     text-align: center;
     margin-top: 0.5em;
+  }
+
+  @media (max-width: 600px) {
+    span.wave {
+      display: none;
+    }
   }
 </style>
