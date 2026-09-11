@@ -7,7 +7,28 @@ heroImage: "../../assets/quaternion-banner.png"
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
 
-**Update:** I made [a video](https://www.youtube.com/watch?v=cuZ99u7OSZE) on this project :)
+<style>
+.yt-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 3em;
+}
+
+#yt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<div class="yt-container">
+    <iframe id="yt" src="https://www.youtube.com/embed/cuZ99u7OSZE?si=B7SWJ4BtwofjsLAJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 I was reading about [quaternions](https://en.wikipedia.org/wiki/Quaternion), so I decided to make a simple Quaternion [library and visualizer](https://github.com/elimirks/miscprojects/tree/master/quaternion) in C++ to better understand them.
 
