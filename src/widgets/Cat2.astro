@@ -1,0 +1,26 @@
+<!-- TODO: support 256x256 mode for mobile... maybe -->
+<canvas id="cat-canvas" width="512" height="256"></canvas>
+<img src="/images/cat-sim/cat_sprite_sheet.png" alt="Cat Sprite Sheet" />
+
+<script>
+  // TODO: import `CatSim` somehow. I'm sure there's an Astro way to do it
+  import { Sim } from "../widgets/CatSim.ts";
+
+  const canvas = document.getElementById("cat-canvas");
+  const sim = new Sim(canvas);
+
+  function update(now) {
+    sim.update(now);
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+</script>
+
+<style>
+  #cat-canvas {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1em;
+    border: 1px solid #000;
+  }
+</style>

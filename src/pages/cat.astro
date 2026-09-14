@@ -1,0 +1,36 @@
+---
+import Cat2 from "../widgets/Cat2.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <body>
+    <main>
+      <Cat2 />
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img.logo-icon {
+    align-self: center;
+    max-width: 200px;
+    margin: 2em 0;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
+  @media (max-width: 600px) {
+    span.wave {
+      display: none;
+    }
+  }
+</style>
