@@ -1,19 +1,31 @@
 <!-- TODO: support 256x256 mode for mobile... maybe -->
 <canvas id="cat-canvas" width="512" height="256"></canvas>
+
+<button id="add-furniture-btn">Add Furniture</button>
+
 <img src="/images/cat-sim/cat_sprite_sheet.png" alt="Cat Sprite Sheet" />
 
 <script>
-  // TODO: import `CatSim` somehow. I'm sure there's an Astro way to do it
-  import { Sim } from "../widgets/CatSim.ts";
+  import { CanvasDims, Sim } from "../widgets/CatSim.ts";
 
-  const canvas = document.getElementById("cat-canvas");
-  const sim = new Sim(canvas);
+  const canvas = document.getElementById("cat-canvas") as HTMLCanvasElement;
 
-  function update(now) {
+  // If I ever support other `dims` variants, we can destroy and recreate the
+  // sim for whatever the current screen dims are.
+  const sim = new Sim(canvas, {
+    dims: CanvasDims.W512H256,
+  });
+
+  function update(now: DOMHighResTimeStamp) {
     sim.update(now);
     requestAnimationFrame(update);
   }
   requestAnimationFrame(update);
+
+  const furnBtn = document.getElementById("add-furniture-btn");
+  furnBtn?.addEventListener('click', (_ev) => {
+    sim.addRandomFurniture();
+  });
 </script>
 
 <style>
@@ -22,5 +34,36 @@
     margin: 0 auto;
     margin-top: 1em;
     border: 1px solid #000;
+  }
+
+  #add-furniture-btn {
+    background: linear-gradient(135deg, #ffe5ec 0%, #ffc1cc 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border-radius: 50px;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #a52a2a;
+    box-shadow: 0 4px 16px 0 rgba(255,182,193,0.25), 0 1.5px 4px 0 rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    outline: none;
+    margin: 1.5em auto 0 auto;
+    display: block;
+  }
+
+  #add-furniture-btn:hover {
+    background: linear-gradient(135deg, #ffd6e0 0%, #ffb6c1 100%);
+    transform: scale(1.07);
+    box-shadow: 0 8px 24px 0 rgba(255,182,193,0.35), 0 2px 8px 0 rgba(0,0,0,0.13);
+  }
+
+  #add-furniture-btn:active {
+    background: linear-gradient(135deg, #ffe5ec 0%, #ffc1cc 100%);
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px 0 rgba(255,182,193,0.18), 0 1px 2px 0 rgba(0,0,0,0.10);
   }
 </style>

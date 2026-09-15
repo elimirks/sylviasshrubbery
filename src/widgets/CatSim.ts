@@ -1,8 +1,23 @@
 const FPS = 30;
 const FRAME_DURATION = 1000 / FPS;
 
+const PIXEL_SCALING: number = 4;
+const CRATE_BASE_SIZE = 16;
+const GRID_SIZE: number = CRATE_BASE_SIZE * PIXEL_SCALING;
+
+type Tile = [number, number];
+
+export enum CanvasDims {
+  W512H256 = "512x256",
+};
+
+export interface CanvasOpts {
+  dims: CanvasDims;
+};
+
 export class Sim {
   canvas: HTMLCanvasElement;
+  dims: CanvasDims;
   ctx: CanvasRenderingContext2D;
 
   crateSprite: HTMLImageElement;
@@ -10,10 +25,12 @@ export class Sim {
 
   lastRenderTime = 0;
 
-  cat: Cat;
+  cats: Cat[] = [];
+  objs: Obj[] = [];
 
-  constructor(canvas: HTMLCanvasElement) {
+  constructor(canvas: HTMLCanvasElement, opts: CanvasOpts) {
     this.canvas = canvas;
+    this.dims = opts.dims;
     this.ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     this.ctx.imageSmoothingEnabled = false;
 
@@ -23,7 +40,9 @@ export class Sim {
     this.catSprite = new Image();
     this.catSprite.src = "/images/cat-sim/cat_sprite_sheet.png";
 
-    this.cat = new Cat(this);
+    const cat1 = new Cat(this, 100, 10);
+    cat1.sprite.setSequence(0);
+    this.cats.push(cat1);
   }
 
   update(now: DOMHighResTimeStamp) {
@@ -33,16 +52,45 @@ export class Sim {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     if (this.lastRenderTime != 0) {
-      this.cat.sprite.advance();
+      for (let cat of this.cats) {
+        cat.sprite.advance();
+      }
     }
-    this.cat.draw(this.ctx, 0, 0);
+
+    for (const obj of this.objs) {
+      obj.draw(this.ctx, obj.x(), obj.y());
+    }
+    for (const cat of this.cats) {
+      cat.draw(this.ctx);
+    }
 
     this.lastRenderTime = now;
+  }
+
+  /// TODO:
+  /// ```typescript
+  /// addRandomCat() {
+  /// }
+  /// ```
+
+  addRandomFurniture() {
+    let width: number;
+    let height: number;
+
+    if (this.dims == CanvasDims.W512H256) {
+      width = 512;
+      height = 256;
+    }
+
+    let newFurn = new Crate(this, 200, 100, 5) as Obj;
+    this.objs.push(newFurn);
   }
 }
 
 export interface Obj {
   draw(ctx: CanvasRenderingContext2D, x: number, y: number): void;
+  x(): number;
+  y(): number;
 }
 
 // TODO: consider storing `len` instead of `end`
@@ -132,10 +180,72 @@ export class AnimSprite {
   }
 }
 
+interface StaticSpriteLayout {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export class StaticSprite {
+  sprite: HTMLImageElement;
+  width: number;
+  height: number;
+
+  scaling: number;
+
+  layout: StaticSpriteLayout[];
+
+  constructor(
+    sprite: HTMLImageElement,
+    layout: StaticSpriteLayout[],
+    scaling: number,
+  ) {
+    this.sprite = sprite;
+    this.width = this.sprite.width;
+    this.height = this.sprite.height;
+    
+    this.layout = layout;
+    this.scaling = scaling;
+
+    if (this.layout.length === 0) {
+      throw new Error("StaticSprite must have at least one layout");
+    }
+    if (this.scaling <= 0) {
+      throw new Error("Scaling must be greater than 0");
+    }
+    if (Math.log2(this.scaling) % 1 !== 0) {
+      throw new Error("Scaling must be a power of 2");
+    }
+  }
+
+  draw(ctx: CanvasRenderingContext2D, x: number, y: number, layoutIndex: number) {
+    if (layoutIndex < 0 || layoutIndex >= this.layout.length) {
+      throw new Error("Invalid layout index");
+    }
+
+    const layout = this.layout[layoutIndex];
+
+    ctx.drawImage(
+      this.sprite,
+      layout.x,
+      layout.y,
+      layout.width,
+      layout.height,
+      x,
+      y,
+      layout.width * this.scaling,
+      layout.height * this.scaling,
+    );
+  }
+}
+
 export class Cat {
   sprite: AnimSprite;
+  _x: number;
+  _y: number;
 
-  constructor(sim: Sim) {
+  constructor(sim: Sim, x: number = 0, y: number = 0) {
     // TODO: support variable duration sequences.
     // Some of the anim frames should take longer than others!
     const sequences: AnimSequence[] = [
@@ -182,9 +292,125 @@ export class Cat {
     ];
 
     this.sprite = new AnimSprite(sim.catSprite, sequences, 32, 32, 4);
+    this._x = x;
+    this._y = y;
   }
 
-  draw(ctx: CanvasRenderingContext2D, x: number, y: number): void {
-    this.sprite.draw(ctx, x, y);
+  draw(ctx: CanvasRenderingContext2D): void {
+    this.sprite.draw(ctx, this._x, this._y);
+  }
+
+  x(): number {
+    return this._x;
+  }
+
+  y(): number {
+    return this._y;
+  }
+}
+
+export class Crate {
+  sprite: StaticSprite;
+  _x: number;
+  _y: number;
+  crateIndex: number;
+
+  constructor(
+    sim: Sim,
+    x: number,
+    y: number,
+    crateIndex: number,
+  ) {
+    this._x = x;
+    this._y = y;
+    this.crateIndex = crateIndex;
+
+    const spriteLayout = [
+      {
+        x: 0,
+        y: 0,
+        width: 16,
+        height: 16,
+      },
+      {
+        x: 16,
+        y: 0,
+        width: 16,
+        height: 16,
+      },
+      {
+        x: 0,
+        y: 16,
+        width: 16,
+        height: 16,
+      },
+      {
+        x: 16,
+        y: 16,
+        width: 32,
+        height: 32,
+      },
+      {
+        x: 0,
+        y: 32,
+        width: 16,
+        height: 32,
+      },
+      {
+        x: 16,
+        y: 16,
+        width: 32,
+        height: 32,
+      },
+      {
+        x: 16,
+        y: 48,
+        width: 32,
+        height: 16,
+      },
+    ];
+    this.sprite = new StaticSprite(
+      sim.crateSprite,
+      spriteLayout,
+      4,
+    );
+  }
+
+  draw(ctx: CanvasRenderingContext2D): void {
+    this.sprite.draw(ctx, this._x, this._y, this.crateIndex);
+  }
+
+  x(): number {
+    return this._x;
+  }
+
+  y(): number {
+    return this._y;
+  }
+
+  width(): number {
+    const layout = [
+      { width: 16 },
+      { width: 16 },
+      { width: 16 },
+      { width: 32 },
+      { width: 16 },
+      { width: 32 },
+      { width: 32 },
+    ];
+    return layout[this.crateIndex]?.width ?? 16;
+  }
+
+  height(): number {
+    const layout = [
+      { height: 16 },
+      { height: 16 },
+      { height: 16 },
+      { height: 32 },
+      { height: 32 },
+      { height: 32 },
+      { height: 16 },
+    ];
+    return layout[this.crateIndex]?.height ?? 16;
   }
 }
