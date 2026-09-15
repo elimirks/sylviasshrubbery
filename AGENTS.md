@@ -27,8 +27,8 @@ Do not add stupid comments. For example, these are stupid comments.
 
 ```typescript
 let x = [
-    0, // 0th index
-    45, // 1st index
+  0, // 0th index
+  45, // 1st index
 ];
 ```
 
