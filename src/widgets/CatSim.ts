@@ -52,6 +52,15 @@ export class Sim {
     cat1.sprite.setSequence(0);
     this.cats.push(cat1);
 
+    this.furniture.push(new Crate(this, 0, 0, 0));
+    this.furniture.push(new Crate(this, 16 * PIXEL_SCALING, 0, 1));
+    this.furniture.push(new Crate(this, 48 * PIXEL_SCALING, 0, 2));
+    this.furniture.push(new Crate(this, 64 * PIXEL_SCALING, 0, 3));
+
+    for (const furn of this.furniture) {
+      console.log(furn.x(), furn.y(), furn.width(), furn.height());
+    }
+
     if (opts.dims === CanvasDims.W512H256) {
       this.gridWidth = 512 / SCALED_TILE_SIZE;
       this.gridHeight = 256 / SCALED_TILE_SIZE;
@@ -73,7 +82,6 @@ export class Sim {
     }
 
     for (const furn of this.furniture) {
-      // TODO: accessing `.x()` and `.y()` is kinda pointless
       furn.draw(this.ctx);
     }
     for (const cat of this.cats) {
@@ -94,7 +102,7 @@ export class Sim {
   // It might be worth creating the "virtual" surfaces list first (where the cat can stand), then each time we add a crate, update the surface list accordingly.
   //
   // TODO: use the computeVirtualFloors function for this
-  addRandomFurniture() {
+  old_addRandomFurniture() {
     // Build occupancy grid
     const grid: boolean[][] = [];
     for (let y = 0; y < this.gridHeight; y++) {
@@ -185,6 +193,52 @@ export class Sim {
     }
     // If we get here, couldn't find a spot after maxAttempts
   }
+
+  addRandomFurniture() {
+    const floors = computeVirtualFloors(
+      this.furniture, this.gridWidth, this.gridHeight);
+    const occupiedTiles = computeOccupiedTiles(
+      this.furniture, this.gridWidth, this.gridHeight);
+
+    const crateIndex = Math.floor(Math.random() * crateSpriteLayout.length);
+    const crateDims = crateSpriteLayout[crateIndex];
+    const crateGridWidth = Math.ceil(crateDims.width / TILE_SIZE);
+    const crateGridHeight = Math.ceil(crateDims.height / TILE_SIZE);
+
+    // TODO: finish this function
+  }
+}
+
+// Returns a flattened grid of occupied tiles. Used for new RNG tile placements
+function computeOccupiedTiles(
+  furniture: Furniture[],
+  gridWidth: number,
+  gridHeight: number,
+): number[] {
+  const occupied: number[] = new Array(gridWidth * gridHeight).fill(0);
+
+  for (const furn of furniture) {
+    const fx = Math.floor(furn.x() / SCALED_TILE_SIZE);
+    const fw = Math.ceil(furn.width() / SCALED_TILE_SIZE);
+    const fy = Math.floor(furn.y() / SCALED_TILE_SIZE);
+    const fh = Math.ceil(furn.height() / SCALED_TILE_SIZE);
+
+    for (let dy = 0; dy < fh; dy++) {
+      for (let dx = 0; dx < fw; dx++) {
+        const gridX = fx + dx;
+        const gridY = fy + dy;
+        if (
+          gridX >= 0 &&
+          gridX < gridWidth &&
+          gridY >= 0 &&
+          gridY < gridHeight
+        ) {
+          occupied[gridY * gridWidth + gridX] = 1;
+        }
+      }
+    }
+  }
+  return occupied;
 }
 
 function computeVirtualFloors(
@@ -574,12 +628,6 @@ const crateSpriteLayout = [
   },
   {
     x: 16,
-    y: 16,
-    width: 32,
-    height: 32,
-  },
-  {
-    x: 16,
     y: 48,
     width: 32,
     height: 16,
@@ -616,28 +664,10 @@ export class Crate {
   }
 
   width(): number {
-    const layout = [
-      { width: 16 },
-      { width: 16 },
-      { width: 16 },
-      { width: 32 },
-      { width: 16 },
-      { width: 32 },
-      { width: 32 },
-    ];
-    return layout[this.crateIndex]?.width ?? 16;
+    return crateSpriteLayout[this.crateIndex]?.width ?? 16;
   }
 
   height(): number {
-    const layout = [
-      { height: 16 },
-      { height: 16 },
-      { height: 16 },
-      { height: 32 },
-      { height: 32 },
-      { height: 32 },
-      { height: 16 },
-    ];
-    return layout[this.crateIndex]?.height ?? 16;
+    return crateSpriteLayout[this.crateIndex]?.height ?? 16;
   }
 }
