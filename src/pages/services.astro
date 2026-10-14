@@ -1,0 +1,158 @@
+---
+import ProgrammerCatImage from "../assets/programmer-cat.jpg";
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+  title="Services"
+  description="Sylvia's software services"
+  pubDate={new Date("October 14 2026")}
+  heroImage={ProgrammerCatImage}
+>
+  <h2>Contact Info</h2>
+
+  <p>
+    Contact me on <a
+      href="https://www.linkedin.com/in/sylviamirecki/"
+      target="_blank">LinkedIn</a
+    > with your needs and we can set up a meeting.
+  </p>
+
+  <h2>High performance computing</h2>
+
+  <p>
+    I'm looking for teams who need to scale their data infrastructure, optimize
+    distributed systems, or build high-throughput pipelines. If you want to cut
+    costs, boost speed, or reduce the number of compute nodes you require, hit
+    me up!
+  </p>
+
+  <h4>Why me?</h4>
+  <div class="hpc-highlight">
+    <ul>
+      <li>
+        Redesigned caching mechanism with Redis to reduce costs 5x-20x and
+        designed distributed data apps with Scala, Spark, and Python at Amazon
+        Alexa.
+      </li>
+      <li>
+        Redesigned ETL pipeline to cut back 3p onboarding time from weeks to
+        days via Scala code generation at Amazon Alexa.
+      </li>
+      <li>
+        Wrote a B compiler in Rust with a highly parallel compiler pipeline
+        running at 3 million LOC/second, featuring a recursive descent parser
+        with SIMD lexing, an embedded linker, an optimizer, and a single
+        dependency jemalloc.
+      </li>
+      <li>
+        Solved distributed system failures through metrics and massive log
+        stores across Go and Rust services at Dropbox.
+      </li>
+      <li>
+        Improved drivers, bootloaders, and system functions for
+        indoor-positioning systems and flying machines using ARM C and C++ at
+        Verity Studios AG.
+      </li>
+    </ul>
+  </div>
+
+  <h4>What am I offering?</h4>
+  <p>
+    I'll build you reliable high performance software to fix any bottlenecks you
+    have in your system.
+  </p>
+
+  <h2>Multimedia processing</h2>
+  components
+  <p>
+    I'm looking for teams or creators who need custom video/audio processing,
+    real-time pipelines, or custom GStreamer plugins. If you want to push the
+    boundaries of multimedia, I would be giddy to build for you!
+  </p>
+
+  <h4>Why me?</h4>
+  <div class="media-highlight">
+    <ul>
+      <li>
+        Implemented a real-time multimedia (video/audio) processing pipeline in
+        Rust with a hand-rolled stream-based recursive descent parser at
+        Searchless.
+      </li>
+      <li>
+        Built custom GStreamer components for video postprocessing at
+        Searchless.
+      </li>
+      <li>
+        Developed Wavy Crockett, a software audio synthesizer platform in Rust
+        featuring a custom Lisp interpreter, fundamental audio building blocks
+        (sine waves, square waves, white noise, ADSR envelopes, gaussian blurs),
+        LFO envelopes, drum synthesis, chord progressions, and sequencing.
+      </li>
+    </ul>
+  </div>
+
+  <h4>What am I offering?</h4>
+  <p>
+    I'll build you the tools you need, whether it's real-time video pipelines,
+    A/V effect plugins, or multimedia integrations with any stack.
+  </p>
+
+  <h2>Audio synthesizers</h2>
+
+  <p>
+    I'm looking for musicians who are looking to tune into the "oldschool
+    computer" sounds. If you want an easy way to interact with an old audio chip
+    like the POKEY or C64 SID, I'm your girl 😎
+  </p>
+
+  <div class="pokey-video">
+    <video controls>
+      <source src="/video/pokey_mario_lowres.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <h4>Why me?</h4>
+  <ul>
+    <li>
+      Hand-wired a 6502 computer (Phlogiston 6502) following the Eater 6502 kit,
+      extracted a POKEY chip from a broken Atari 800 from the scrapyard, and
+      rewired the computer to incorporate POKEY audio synthesis and I/O muxing.
+    </li>
+    <li>
+      Developed Wavy Crockett, a software audio synthesizer platform in Rust
+      featuring a custom Lisp interpreter, fundamental audio building blocks
+      (sine waves, square waves, white noise, ADSR envelopes, gaussian blurs),
+      LFO envelopes, drum synthesis, chord progressions, and sequencing.
+    </li>
+    <li>
+      I have a degree in Physics and have done quite a lot of hobby electronics
+      work (as shown in the video above), plus an internship in Embedded
+      Software Engineering.
+    </li>
+  </ul>
+
+  <h4>What am I offering?</h4>
+
+  <p>
+    I'll build you custom hardware for easily interfacing with old audio chips
+    however you like - be that knobs and dials or MIDI. I'm also open to
+    touring, but I'm definitely not a composer so you would have to boss me
+    around and tell me what bleeps and bloops to make.
+  </p>
+</Layout>
+
+<style>
+  .pokey-video {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pokey-video video {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

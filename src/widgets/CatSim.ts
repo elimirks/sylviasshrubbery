@@ -196,9 +196,15 @@ export class Sim {
 
   addRandomFurniture() {
     const floors = computeVirtualFloors(
-      this.furniture, this.gridWidth, this.gridHeight);
+      this.furniture,
+      this.gridWidth,
+      this.gridHeight,
+    );
     const occupiedTiles = computeOccupiedTiles(
-      this.furniture, this.gridWidth, this.gridHeight);
+      this.furniture,
+      this.gridWidth,
+      this.gridHeight,
+    );
 
     const crateIndex = Math.floor(Math.random() * crateSpriteLayout.length);
     const crateDims = crateSpriteLayout[crateIndex];
